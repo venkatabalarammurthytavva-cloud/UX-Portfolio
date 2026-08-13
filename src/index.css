@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #0D0D0E;
+    color: #e5e2e1;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+/* Custom Utilities */
+.font-label-caps {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.font-display {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Architect Grid Background */
+.grid-bg {
+  background-image: 
+    linear-gradient(to right, #1c1b1b 1px, transparent 1px),
+    linear-gradient(to bottom, #1c1b1b 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Bento Card Styling */
+.bento-card {
+  background-color: #1A1A1C;
+  border: 1px solid #27272A;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3F3F46, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bento-card:hover::before {
+  opacity: 1;
+}
+
+.bento-card:hover {
+  box-shadow: inset 0 0 20px rgba(26,26,28,0.5);
+}
+
+.glass-overlay {
+  background: rgba(26, 26, 28, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid #27272A;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(1deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 8s ease-in-out infinite 2s;
+}
+
+.animate-float-slow {
+  animation: float 10s ease-in-out infinite 4s;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0D0D0E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3F3F46;
+}

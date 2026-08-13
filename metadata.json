@@ -1,0 +1,6 @@
+{
+  "name": "Systems Designer Portfolio",
+  "description": "Balaram's Systems & Product Design Portfolio featuring case studies, design system explorer, music production studio, and interactive shop.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
