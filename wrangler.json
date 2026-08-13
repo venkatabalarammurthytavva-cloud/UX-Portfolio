@@ -1,10 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "systems-designer-portfolio",
-  "main": "./src/index.js",
   "assets": {
     "directory": "./dist",
-    "binding": "ASSETS",
     "not_found_handling": "single-page-application"
   },
   "compatibility_date": "2026-08-13",
