@@ -1,7 +1,12 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "systems-designer-portfolio",
-  "pages_build_output_dir": "./dist",
+  "main": "./src/index.js",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  },
   "compatibility_date": "2026-08-13",
   "compatibility_flags": ["nodejs_compat"]
 }
