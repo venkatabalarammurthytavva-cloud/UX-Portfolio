@@ -12,9 +12,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
           Systems Designer
         </div>
 
-        <nav className="flex gap-6 font-label-caps text-xs uppercase tracking-widest">
+        <nav className="flex flex-wrap gap-6 font-label-caps text-xs uppercase tracking-widest">
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/t-balaram/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#c5c6ca] hover:text-white transition-colors"
@@ -22,7 +22,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             LinkedIn
           </a>
           <a
-            href="https://dribbble.com"
+            href="https://www.behance.net/tavvabalaram"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#c5c6ca] hover:text-white transition-colors"
+          >
+            Behance
+          </a>
+          <a
+            href="https://dribbble.com/tavvabalaram"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#c5c6ca] hover:text-white transition-colors"
@@ -30,19 +38,19 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             Dribbble
           </a>
           <a
-            href="https://github.com"
+            href="https://medium.com/@tavvabalaram"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#c5c6ca] hover:text-white transition-colors"
           >
-            GitHub
+            Medium
           </a>
-          <button
-            onClick={onOpenContact}
-            className="text-[#c5c6ca] hover:text-white transition-colors focus:outline-none"
+          <a
+            href="mailto:venkatabalarammurthy.tavva@gmail.com"
+            className="text-[#c5c6ca] hover:text-white transition-colors"
           >
             Email
-          </button>
+          </a>
         </nav>
 
         <div className="font-label-caps text-xs text-[#c5c6ca]">

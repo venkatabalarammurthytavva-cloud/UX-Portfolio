@@ -42,7 +42,7 @@ export default function App() {
       />
 
       {/* Main View Area */}
-      <main className="flex-grow pt-16 flex flex-col w-full">
+      <main className="flex-grow pt-20 flex flex-col w-full">
         {activeTab === 'work' && (
           <>
             {/* Hero Section */}
