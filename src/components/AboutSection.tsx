@@ -88,7 +88,7 @@ export const AboutSection: React.FC = () => {
             <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-2xl blur opacity-30 group-hover:opacity-75 transition duration-500"></div>
             <img
               src={PROFILE_IMAGE}
-              alt="Balaram Profile"
+              alt="Balaram Tavva, Senior Systems and Product Designer"
               className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-2xl object-cover border border-white/20 shadow-2xl"
             />
           </div>
@@ -96,43 +96,43 @@ export const AboutSection: React.FC = () => {
       </div>
 
       {/* 2. Interactive Music Producer Studio */}
-      <div className="bg-[#141313] border border-[#27272A] p-8 sm:p-10 rounded-2xl space-y-6 relative overflow-hidden grid-bg">
+      <section aria-labelledby="studio-heading" className="bg-[#141313] border border-[#27272A] p-8 sm:p-10 rounded-2xl space-y-6 relative overflow-hidden grid-bg">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-purple-400 text-lg">graphic_eq</span>
+              <span className="material-symbols-outlined text-purple-400 text-lg" aria-hidden="true">graphic_eq</span>
               <span className="font-label-caps text-xs text-purple-400 uppercase tracking-widest">
                 After Hours Studio
               </span>
             </div>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold text-white mt-1">
+            <h3 id="studio-heading" className="font-display text-2xl sm:text-3xl font-bold text-white mt-1">
               "When I close Figma, you'll find me producing music."
             </h3>
           </div>
 
-          <span className="px-3 py-1 bg-purple-500/10 border border-purple-500/30 text-purple-300 font-label-caps text-xs rounded-full">
+          <span className="px-3 py-1 bg-purple-500/10 border border-purple-500/30 text-purple-200 font-label-caps text-xs rounded-full">
             Lo-Fi & Ambient Synth Beats
           </span>
         </div>
 
         {/* Audio Player Control Widget */}
-        <div className="bg-[#1A1A1C] border border-[#27272A] p-6 rounded-xl flex flex-col md:flex-row items-center gap-6 justify-between">
+        <div className="bg-[#1A1A1C] border border-[#27272A] p-6 rounded-xl flex flex-col md:flex-row items-center gap-6 justify-between" aria-label="Music player">
           <div className="flex items-center gap-4 w-full md:w-auto">
             <img
               src={currentTrack.coverArt}
-              alt={currentTrack.title}
+              alt={`${currentTrack.title} track cover`}
               className="w-16 h-16 rounded-lg object-cover border border-white/10"
             />
             <div>
               <h4 className="font-display text-lg font-bold text-white">{currentTrack.title}</h4>
-              <p className="font-label-caps text-xs text-[#c5c6ca]">
+              <p className="font-label-caps text-xs text-zinc-300">
                 {currentTrack.genre} • {currentTrack.bpm} BPM • Key: {currentTrack.key}
               </p>
             </div>
           </div>
 
           {/* Equalizer Visualizer Bars */}
-          <div className="flex items-center gap-1.5 h-10 px-4 py-2 bg-[#0D0D0E] rounded-lg border border-[#27272A]">
+          <div className="flex items-center gap-1.5 h-10 px-4 py-2 bg-[#0D0D0E] rounded-lg border border-[#27272A]" aria-hidden="true">
             {[40, 75, 55, 90, 60, 30, 85, 45, 95, 65, 50, 80].map((height, idx) => (
               <div
                 key={idx}
@@ -147,29 +147,32 @@ export const AboutSection: React.FC = () => {
           {/* Controls */}
           <div className="flex items-center gap-4">
             <button
+              type="button"
               onClick={prevTrack}
-              className="p-2 rounded-full hover:bg-white/10 text-white transition-colors"
-              title="Previous Track"
+              className="p-2 rounded-full hover:bg-white/10 text-white transition-colors focus:ring-2 focus:ring-purple-400"
+              aria-label="Play previous track"
             >
-              <span className="material-symbols-outlined text-2xl">skip_previous</span>
+              <span className="material-symbols-outlined text-2xl" aria-hidden="true">skip_previous</span>
             </button>
 
             <button
+              type="button"
               onClick={togglePlay}
-              className="w-12 h-12 rounded-full bg-purple-500 hover:bg-purple-400 text-white flex items-center justify-center transition-all shadow-lg"
-              title={isPlaying ? 'Pause Track' : 'Play Track'}
+              className="w-12 h-12 rounded-full bg-purple-500 hover:bg-purple-400 text-white flex items-center justify-center transition-all shadow-lg focus:ring-2 focus:ring-purple-300"
+              aria-label={isPlaying ? `Pause track ${currentTrack.title}` : `Play track ${currentTrack.title}`}
             >
-              <span className="material-symbols-outlined text-2xl">
+              <span className="material-symbols-outlined text-2xl" aria-hidden="true">
                 {isPlaying ? 'pause' : 'play_arrow'}
               </span>
             </button>
 
             <button
+              type="button"
               onClick={nextTrack}
-              className="p-2 rounded-full hover:bg-white/10 text-white transition-colors"
-              title="Next Track"
+              className="p-2 rounded-full hover:bg-white/10 text-white transition-colors focus:ring-2 focus:ring-purple-400"
+              aria-label="Play next track"
             >
-              <span className="material-symbols-outlined text-2xl">skip_next</span>
+              <span className="material-symbols-outlined text-2xl" aria-hidden="true">skip_next</span>
             </button>
           </div>
 
@@ -177,20 +180,21 @@ export const AboutSection: React.FC = () => {
             ref={audioRef}
             src={currentTrack.audioSampleUrl}
             onEnded={nextTrack}
+            aria-label={currentTrack.title}
           />
         </div>
-      </div>
+      </section>
 
       {/* 3. Career Experience Timeline */}
-      <div className="space-y-8">
-        <h3 className="font-label-caps text-sm uppercase tracking-widest text-[#c5c6ca] flex items-center gap-2">
-          <span className="material-symbols-outlined text-emerald-400 text-base">work_history</span>
+      <section aria-labelledby="experience-timeline-heading" className="space-y-8">
+        <h3 id="experience-timeline-heading" className="font-label-caps text-sm uppercase tracking-widest text-[#c5c6ca] flex items-center gap-2">
+          <span className="material-symbols-outlined text-emerald-400 text-base" aria-hidden="true">work_history</span>
           Career Track & Achievements
         </h3>
 
-        <div className="space-y-6">
+        <ol className="space-y-6 list-none p-0 m-0">
           {WORK_EXPERIENCE.map((exp, idx) => (
-            <div
+            <li
               key={idx}
               className="bg-[#1A1A1C] border border-[#27272A] p-8 rounded-xl hover:border-white/30 transition-all space-y-4"
             >
@@ -201,12 +205,12 @@ export const AboutSection: React.FC = () => {
                     {exp.company} • {exp.location}
                   </div>
                 </div>
-                <span className="px-3 py-1 bg-[#27272A] rounded font-label-caps text-xs text-[#c5c6ca]">
+                <span className="px-3 py-1 bg-[#27272A] rounded font-label-caps text-xs text-zinc-300">
                   {exp.period}
                 </span>
               </div>
 
-              <p className="text-base text-[#c5c6ca] leading-relaxed">{exp.description}</p>
+              <p className="text-base text-zinc-200 leading-relaxed">{exp.description}</p>
 
               <div className="flex flex-wrap gap-2 pt-2 border-t border-[#27272A]">
                 {exp.highlights.map((h, hIdx) => (
@@ -214,15 +218,15 @@ export const AboutSection: React.FC = () => {
                     key={hIdx}
                     className="px-3 py-1 bg-white/5 border border-white/10 rounded-full font-label-caps text-[11px] text-white flex items-center gap-1.5"
                   >
-                    <span className="material-symbols-outlined text-emerald-400 text-sm">check</span>
+                    <span className="material-symbols-outlined text-emerald-400 text-sm" aria-hidden="true">check</span>
                     {h}
                   </span>
                 ))}
               </div>
-            </div>
+            </li>
           ))}
-        </div>
-      </div>
+        </ol>
+      </section>
     </div>
   );
 };

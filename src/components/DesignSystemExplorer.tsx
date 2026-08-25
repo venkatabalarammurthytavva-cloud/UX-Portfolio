@@ -46,29 +46,37 @@ export const DesignSystemExplorer: React.FC = () => {
         </div>
 
         <button
+          type="button"
           onClick={exportTokensJson}
-          className="flex items-center gap-2 px-6 py-3 bg-white text-black font-label-caps text-xs uppercase tracking-widest font-bold rounded-xl hover:bg-emerald-400 transition-all shadow-lg"
+          className="flex items-center gap-2 px-6 py-3 bg-white text-black font-label-caps text-xs uppercase tracking-widest font-bold rounded-xl hover:bg-emerald-400 transition-all shadow-lg focus:ring-2 focus:ring-emerald-400"
         >
-          <span className="material-symbols-outlined text-base">download</span>
+          <span className="material-symbols-outlined text-base" aria-hidden="true">download</span>
           Export Tokens (.JSON)
         </button>
       </div>
 
       {/* 1. Design Tokens Grid */}
       <div className="space-y-6">
-        <h3 className="font-label-caps text-sm uppercase tracking-widest text-[#c5c6ca] flex items-center gap-2">
-          <span className="material-symbols-outlined text-emerald-400 text-base">palette</span>
-          01 / Atomic Design Tokens
-        </h3>
+        <div className="flex justify-between items-center">
+          <h3 className="font-label-caps text-sm uppercase tracking-widest text-[#c5c6ca] flex items-center gap-2">
+            <span className="material-symbols-outlined text-emerald-400 text-base" aria-hidden="true">palette</span>
+            01 / Atomic Design Tokens
+          </h3>
+          <div className="sr-only" aria-live="polite">
+            {copiedToken ? `Copied token value ${copiedToken} to clipboard` : ''}
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {DESIGN_TOKENS.map((token, idx) => (
-            <div
+            <button
               key={idx}
+              type="button"
               onClick={() => copyToken(token.value)}
-              className="bg-[#1A1A1C] border border-[#27272A] p-5 rounded-xl hover:border-emerald-400/50 transition-all cursor-pointer group flex flex-col justify-between h-36"
+              aria-label={`Copy token ${token.name}, value ${token.value}`}
+              className="bg-[#1A1A1C] border border-[#27272A] p-5 rounded-xl hover:border-emerald-400/50 transition-all cursor-pointer group flex flex-col justify-between min-h-[9rem] text-left focus:ring-2 focus:ring-emerald-400"
             >
-              <div className="flex justify-between items-start">
+              <div className="flex justify-between items-start w-full">
                 <div>
                   <span className="font-label-caps text-[10px] uppercase tracking-wider text-emerald-400 px-2 py-0.5 rounded bg-emerald-500/10">
                     {token.category}
@@ -82,17 +90,18 @@ export const DesignSystemExplorer: React.FC = () => {
                   <div
                     className="w-7 h-7 rounded-lg border border-white/20 shadow-inner"
                     style={{ backgroundColor: token.value }}
+                    aria-hidden="true"
                   />
                 )}
               </div>
 
-              <div className="flex justify-between items-end pt-3 border-t border-[#27272A]">
-                <code className="font-label-caps text-xs text-[#c5c6ca]">{token.value}</code>
-                <span className="font-label-caps text-[10px] text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="flex justify-between items-end pt-3 border-t border-[#27272A] w-full">
+                <code className="font-label-caps text-xs text-zinc-300">{token.value}</code>
+                <span className="font-label-caps text-[10px] text-emerald-400 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity">
                   {copiedToken === token.value ? 'Copied!' : 'Click to Copy'}
                 </span>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </div>
@@ -101,22 +110,28 @@ export const DesignSystemExplorer: React.FC = () => {
       <div className="bg-[#1A1A1C] border border-[#27272A] p-8 rounded-2xl space-y-6">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[#27272A] pb-4">
           <h3 className="font-label-caps text-sm uppercase tracking-widest text-[#c5c6ca] flex items-center gap-2">
-            <span className="material-symbols-outlined text-blue-400 text-base">text_fields</span>
+            <span className="material-symbols-outlined text-blue-400 text-base" aria-hidden="true">text_fields</span>
             02 / Typography Hierarchy & Scale
           </h3>
 
-          <input
-            type="text"
-            value={customSampleText}
-            onChange={(e) => setCustomSampleText(e.target.value)}
-            placeholder="Type sample text..."
-            className="px-4 py-2 bg-[#0D0D0E] border border-[#27272A] rounded-lg text-xs font-label-caps text-white w-full sm:w-72 focus:outline-none focus:border-blue-400"
-          />
+          <div className="w-full sm:w-72">
+            <label htmlFor="typography-scale-input" className="sr-only">
+              Type custom typography sample text
+            </label>
+            <input
+              id="typography-scale-input"
+              type="text"
+              value={customSampleText}
+              onChange={(e) => setCustomSampleText(e.target.value)}
+              placeholder="Type sample text..."
+              className="px-4 py-2 bg-[#0D0D0E] border border-[#3F3F46] rounded-lg text-xs font-label-caps text-white placeholder-zinc-400 w-full focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400"
+            />
+          </div>
         </div>
 
         <div className="space-y-6 font-display">
           <div>
-            <span className="font-label-caps text-[10px] text-gray-500 uppercase block mb-1">
+            <span className="font-label-caps text-[10px] text-zinc-400 uppercase block mb-1">
               Display Title (Inter 64px / Bold)
             </span>
             <div className="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
@@ -125,7 +140,7 @@ export const DesignSystemExplorer: React.FC = () => {
           </div>
 
           <div>
-            <span className="font-label-caps text-[10px] text-gray-500 uppercase block mb-1">
+            <span className="font-label-caps text-[10px] text-zinc-400 uppercase block mb-1">
               Headline Large (Inter 32px / SemiBold)
             </span>
             <div className="text-xl sm:text-2xl font-semibold text-white tracking-tight">
@@ -134,7 +149,7 @@ export const DesignSystemExplorer: React.FC = () => {
           </div>
 
           <div>
-            <span className="font-label-caps text-[10px] text-gray-500 uppercase block mb-1">
+            <span className="font-label-caps text-[10px] text-zinc-400 uppercase block mb-1">
               Technical Labels (JetBrains Mono 12px / Medium)
             </span>
             <div className="font-label-caps text-xs text-emerald-400 tracking-widest uppercase">
@@ -149,22 +164,22 @@ export const DesignSystemExplorer: React.FC = () => {
         {/* Buttons & Status Chips */}
         <div className="bg-[#1A1A1C] border border-[#27272A] p-8 rounded-2xl space-y-6">
           <h3 className="font-label-caps text-sm uppercase tracking-widest text-[#c5c6ca] flex items-center gap-2">
-            <span className="material-symbols-outlined text-emerald-400 text-base">smart_button</span>
+            <span className="material-symbols-outlined text-emerald-400 text-base" aria-hidden="true">smart_button</span>
             03 / Button & Status Tokens
           </h3>
 
           {/* Buttons State Controls */}
           <div className="space-y-4">
-            <div className="text-xs font-label-caps text-gray-400 uppercase">Interactive Primary Button</div>
+            <div className="text-xs font-label-caps text-zinc-300 uppercase">Interactive Primary Button</div>
             <div className="flex flex-wrap gap-4">
-              <button className="px-6 py-3 bg-white text-black font-label-caps text-xs uppercase tracking-widest font-bold rounded hover:bg-emerald-400 transition-all">
+              <button type="button" className="px-6 py-3 bg-white text-black font-label-caps text-xs uppercase tracking-widest font-bold rounded hover:bg-emerald-400 transition-all focus:ring-2 focus:ring-emerald-400">
                 Primary Button
               </button>
-              <button className="px-6 py-3 border border-white/20 bg-white/5 text-white font-label-caps text-xs uppercase tracking-widest font-medium rounded hover:bg-white/15 transition-all">
+              <button type="button" className="px-6 py-3 border border-white/20 bg-white/5 text-white font-label-caps text-xs uppercase tracking-widest font-medium rounded hover:bg-white/15 transition-all focus:ring-2 focus:ring-white">
                 Secondary Ghost
               </button>
-              <button className="px-6 py-3 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-label-caps text-xs uppercase tracking-widest font-medium rounded flex items-center gap-2">
-                <span className="material-symbols-outlined text-sm">check_circle</span>
+              <button type="button" className="px-6 py-3 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-label-caps text-xs uppercase tracking-widest font-medium rounded flex items-center gap-2 focus:ring-2 focus:ring-emerald-400">
+                <span className="material-symbols-outlined text-sm" aria-hidden="true">check_circle</span>
                 System Action
               </button>
             </div>
@@ -172,16 +187,16 @@ export const DesignSystemExplorer: React.FC = () => {
 
           {/* Status Chips */}
           <div className="space-y-3 pt-4 border-t border-[#27272A]">
-            <div className="text-xs font-label-caps text-gray-400 uppercase">Status Chips</div>
+            <div className="text-xs font-label-caps text-zinc-300 uppercase">Status Chips</div>
             <div className="flex flex-wrap gap-3">
               <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full font-label-caps text-[11px] uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Approved
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" aria-hidden="true"></span> Approved
               </span>
               <span className="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 rounded-full font-label-caps text-[11px] uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-yellow-400"></span> In Review
+                <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" aria-hidden="true"></span> In Review
               </span>
               <span className="px-3 py-1 bg-red-500/10 border border-red-500/30 text-red-400 rounded-full font-label-caps text-[11px] uppercase tracking-wider flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-red-400"></span> Rejected
+                <span className="w-1.5 h-1.5 rounded-full bg-red-400" aria-hidden="true"></span> Rejected
               </span>
             </div>
           </div>
@@ -190,28 +205,30 @@ export const DesignSystemExplorer: React.FC = () => {
         {/* Dynamic Bento Box Playground */}
         <div className="bg-[#1A1A1C] border border-[#27272A] p-8 rounded-2xl space-y-6">
           <h3 className="font-label-caps text-sm uppercase tracking-widest text-[#c5c6ca] flex items-center gap-2">
-            <span className="material-symbols-outlined text-purple-400 text-base">dashboard_customize</span>
+            <span className="material-symbols-outlined text-purple-400 text-base" aria-hidden="true">dashboard_customize</span>
             04 / Dynamic Bento Card Configurator
           </h3>
 
           {/* Config Controls */}
           <div className="grid grid-cols-2 gap-3 text-xs font-label-caps">
             <div>
-              <label className="text-gray-400 block mb-1">Card Title</label>
+              <label htmlFor="bento-title-input" className="text-zinc-300 block mb-1">Card Title</label>
               <input
+                id="bento-title-input"
                 type="text"
                 value={bentoTitle}
                 onChange={(e) => setBentoTitle(e.target.value)}
-                className="w-full px-3 py-2 bg-[#0D0D0E] border border-[#27272A] rounded text-white focus:outline-none focus:border-emerald-400"
+                className="w-full px-3 py-2 bg-[#0D0D0E] border border-[#3F3F46] rounded text-white focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400"
               />
             </div>
             <div>
-              <label className="text-gray-400 block mb-1">Category Tag</label>
+              <label htmlFor="bento-category-input" className="text-zinc-300 block mb-1">Category Tag</label>
               <input
+                id="bento-category-input"
                 type="text"
                 value={bentoCategory}
                 onChange={(e) => setBentoCategory(e.target.value)}
-                className="w-full px-3 py-2 bg-[#0D0D0E] border border-[#27272A] rounded text-white focus:outline-none focus:border-emerald-400"
+                className="w-full px-3 py-2 bg-[#0D0D0E] border border-[#3F3F46] rounded text-white focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400"
               />
             </div>
           </div>
@@ -222,10 +239,10 @@ export const DesignSystemExplorer: React.FC = () => {
               <span className="font-label-caps text-[10px] text-emerald-400 uppercase tracking-widest">
                 {bentoCategory}
               </span>
-              <span className="material-symbols-outlined text-white text-lg">auto_awesome</span>
+              <span className="material-symbols-outlined text-white text-lg" aria-hidden="true">auto_awesome</span>
             </div>
             <h4 className="font-display text-2xl font-bold text-white">{bentoTitle}</h4>
-            <p className="text-xs text-[#c5c6ca]">
+            <p className="text-xs text-zinc-300">
               Live configured Bento box module built with Architect Enterprise design tokens.
             </p>
           </div>
@@ -235,19 +252,19 @@ export const DesignSystemExplorer: React.FC = () => {
       {/* 4. High Density FinTech Data Table */}
       <div className="bg-[#1A1A1C] border border-[#27272A] p-8 rounded-2xl space-y-6">
         <h3 className="font-label-caps text-sm uppercase tracking-widest text-[#c5c6ca] flex items-center gap-2">
-          <span className="material-symbols-outlined text-emerald-400 text-base">table_chart</span>
+          <span className="material-symbols-outlined text-emerald-400 text-base" aria-hidden="true">table_chart</span>
           05 / Enterprise Data Table Spec
         </h3>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left font-body-md border-collapse">
+          <table className="w-full text-left font-body-md border-collapse min-w-[600px]" aria-label="Enterprise Data Table Spec">
             <thead>
               <tr className="border-b border-[#27272A] font-label-caps text-[11px] text-[#c5c6ca] uppercase">
-                <th className="py-3 px-4">Transaction ID</th>
-                <th className="py-3 px-4">Borrower Entity</th>
-                <th className="py-3 px-4">Capital Amount</th>
-                <th className="py-3 px-4">Risk Rating</th>
-                <th className="py-3 px-4">Approval Status</th>
+                <th scope="col" className="py-3 px-4">Transaction ID</th>
+                <th scope="col" className="py-3 px-4">Borrower Entity</th>
+                <th scope="col" className="py-3 px-4">Capital Amount</th>
+                <th scope="col" className="py-3 px-4">Risk Rating</th>
+                <th scope="col" className="py-3 px-4">Approval Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#27272A] text-sm text-white">

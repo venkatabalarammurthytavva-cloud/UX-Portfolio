@@ -21,21 +21,22 @@ export const Hero: React.FC = () => {
   return (
     <section className="relative min-h-[720px] md:min-h-[820px] flex items-center justify-center overflow-hidden border-b border-[#27272A] grid-bg">
       {/* Background Photograph */}
-      <div className="absolute inset-0 z-0 opacity-60">
+      <div className="absolute inset-0 z-0 opacity-60 pointer-events-none" aria-hidden="true">
         <img 
           src={HERO_BACKGROUND} 
-          alt="Cinematic visual" 
+          alt="" 
+          role="presentation"
           className="w-full h-full object-cover filter contrast-110 saturate-125 brightness-95"
         />
       </div>
 
       {/* Gradient Masking */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D0E]/25 via-[#0D0D0E]/55 to-[#0D0D0E] z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D0E]/25 via-[#0D0D0E]/55 to-[#0D0D0E] z-0 pointer-events-none" aria-hidden="true"></div>
       {/* Soft Center Vignette for Readability */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(13,13,14,0.45)_0%,rgba(13,13,14,0.85)_100%)] z-0"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(13,13,14,0.45)_0%,rgba(13,13,14,0.85)_100%)] z-0 pointer-events-none" aria-hidden="true"></div>
 
       {/* Floating Animated Metric Cards */}
-      <div className="absolute inset-0 z-10 pointer-events-none hidden lg:block overflow-hidden max-w-[1400px] mx-auto">
+      <div className="absolute inset-0 z-10 pointer-events-none hidden lg:block overflow-hidden max-w-[1400px] mx-auto" aria-hidden="true">
         {/* Stat 1: 5+ Years */}
         <div className="absolute top-[12%] left-[6%] rotate-[-3deg] animate-float bg-[#0D0D0E]/80 backdrop-blur-xl border border-white/15 p-5 rounded-xl flex flex-col items-center pointer-events-auto hover:border-white/30 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.5)]">
           <span className="font-display text-4xl font-bold text-[#ff4d2d] mb-1">5+</span>
@@ -69,7 +70,7 @@ export const Hero: React.FC = () => {
 
         <p className="font-body-md text-lg sm:text-xl md:text-2xl text-zinc-100 max-w-2xl leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
           I'm a{' '}
-          <span className="inline-block min-w-[190px] text-center align-middle">
+          <span className="inline-block min-w-[190px] text-center align-middle" aria-live="polite" aria-atomic="true">
             <span
               className={`inline-block font-display font-bold px-3 py-1 rounded-lg transform -skew-x-3 transition-opacity duration-300 ease-in-out text-[#ffff04] bg-[#ffff04]/15 border border-[#ffff04]/40 shadow-md ${
                 isFading ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
@@ -82,27 +83,27 @@ export const Hero: React.FC = () => {
         </p>
 
         {/* Mobile Stats Bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-lg mt-4 lg:hidden">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-lg mt-4 lg:hidden" aria-label="Career statistics">
           <div className="bg-[#1A1A1C] border border-[#27272A] p-3 rounded-lg text-center">
             <div className="text-2xl font-bold text-[#ff4d2d]">5+</div>
-            <div className="text-[10px] font-label-caps text-[#c5c6ca] uppercase">Years Exp</div>
+            <div className="text-[10px] font-label-caps text-zinc-300 uppercase">Years Exp</div>
           </div>
           <div className="bg-[#1A1A1C] border border-[#27272A] p-3 rounded-lg text-center">
             <div className="text-2xl font-bold text-[#2d5bff]">10+</div>
-            <div className="text-[10px] font-label-caps text-[#c5c6ca] uppercase">Projects</div>
+            <div className="text-[10px] font-label-caps text-zinc-300 uppercase">Projects</div>
           </div>
           <div className="bg-[#1A1A1C] border border-[#27272A] p-3 rounded-lg text-center">
             <div className="text-2xl font-bold text-[#10b981]">15L+</div>
-            <div className="text-[10px] font-label-caps text-[#c5c6ca] uppercase">Users</div>
+            <div className="text-[10px] font-label-caps text-zinc-300 uppercase">Users</div>
           </div>
           <div className="bg-[#1A1A1C] border border-[#27272A] p-3 rounded-lg text-center">
             <div className="text-2xl font-bold text-white">0</div>
-            <div className="text-[10px] font-label-caps text-[#c5c6ca] uppercase">Escalations</div>
+            <div className="text-[10px] font-label-caps text-zinc-300 uppercase">Escalations</div>
           </div>
         </div>
 
         {/* Company Logos */}
-        <div className="mt-8 flex flex-wrap justify-center items-center gap-8 sm:gap-14 opacity-75 grayscale hover:grayscale-0 transition-all duration-500">
+        <div className="mt-8 flex flex-wrap justify-center items-center gap-8 sm:gap-14 opacity-75 grayscale hover:grayscale-0 transition-all duration-500" aria-label="Previous companies and employers">
           <span className="font-display font-bold tracking-tighter text-2xl sm:text-3xl text-white/90">NeoSOFT</span>
           <span className="font-display font-bold tracking-tighter text-2xl sm:text-3xl text-white/90">Qentelli</span>
           <span className="font-display font-bold tracking-tighter text-2xl sm:text-3xl text-white/90">Get Infy Solutions</span>
