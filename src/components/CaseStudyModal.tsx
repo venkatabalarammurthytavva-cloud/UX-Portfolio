@@ -14,20 +14,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
 }) => {
   if (!caseStudy) return null;
 
-  const [isUnlocked, setIsUnlocked] = useState(!caseStudy.isLocked);
-  const [passcode, setPasscode] = useState('');
-  const [passcodeError, setPasscodeError] = useState(false);
   const [activeTab, setActiveTab] = useState<'overview' | 'architecture' | 'impact'>('overview');
-
-  const handleUnlock = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (passcode.trim().toUpperCase() === 'BALARAM' || passcode.trim() === '1234' || passcode.trim().length > 0) {
-      setIsUnlocked(true);
-      setPasscodeError(false);
-    } else {
-      setPasscodeError(true);
-    }
-  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/85 backdrop-blur-xl overflow-y-auto animate-fadeIn">
@@ -65,72 +52,29 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
           </div>
         </div>
 
-        {/* If Locked, show Passcode/Access Request */}
-        {!isUnlocked ? (
-          <div className="p-8 sm:p-12 flex flex-col items-center text-center max-w-md mx-auto">
-            <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6">
-              <span className="material-symbols-outlined text-3xl">lock</span>
-            </div>
-            <h3 className="font-display text-2xl font-bold text-white mb-2">Protected Case Study</h3>
-            <p className="text-sm text-[#c5c6ca] mb-6">
-              This NDA case study contains sensitive financial workflow diagrams and system architecture. Enter access key or request instant access below.
-            </p>
-
-            <form onSubmit={handleUnlock} className="w-full space-y-4 mb-6">
-              <div>
-                <input
-                  type="password"
-                  placeholder="Enter passcode (or type 'BALARAM')"
-                  value={passcode}
-                  onChange={(e) => setPasscode(e.target.value)}
-                  className="w-full px-4 py-3 bg-[#1A1A1C] border border-[#27272A] rounded-xl text-white font-label-caps text-sm focus:outline-none focus:border-emerald-400 transition-colors"
-                />
-                {passcodeError && (
-                  <p className="text-xs text-red-400 mt-1">Please enter a passcode to unlock.</p>
-                )}
-              </div>
-              <button
-                type="submit"
-                className="w-full py-3 bg-white text-black font-label-caps text-xs uppercase tracking-widest font-bold rounded-xl hover:bg-emerald-400 transition-all"
-              >
-                Unlock Case Study
-              </button>
-            </form>
-
-            <div className="border-t border-[#27272A] pt-4 w-full flex justify-between items-center text-xs text-[#c5c6ca]">
-              <span>Don't have a passcode?</span>
-              <button
-                onClick={() => setIsUnlocked(true)}
-                className="text-emerald-400 hover:underline font-label-caps"
-              >
-                Instant NDA Preview
-              </button>
-            </div>
+        {/* Unlocked Full Case Study Content */}
+        <div className="p-6 sm:p-10 space-y-8">
+          {/* Nav Tabs */}
+          <div className="flex border-b border-[#27272A] gap-8 font-label-caps text-xs uppercase tracking-widest text-[#c5c6ca]">
+            <button
+              onClick={() => setActiveTab('overview')}
+              className={`pb-3 ${activeTab === 'overview' ? 'text-white border-b-2 border-emerald-400 font-bold' : 'hover:text-white'}`}
+            >
+              01 / Overview & Solution
+            </button>
+            <button
+              onClick={() => setActiveTab('impact')}
+              className={`pb-3 ${activeTab === 'impact' ? 'text-white border-b-2 border-emerald-400 font-bold' : 'hover:text-white'}`}
+            >
+              02 / Key Metrics & Impact
+            </button>
+            <button
+              onClick={() => setActiveTab('architecture')}
+              className={`pb-3 ${activeTab === 'architecture' ? 'text-white border-b-2 border-emerald-400 font-bold' : 'hover:text-white'}`}
+            >
+              03 / System Architecture
+            </button>
           </div>
-        ) : (
-          /* Unlocked Full Case Study Content */
-          <div className="p-6 sm:p-10 space-y-8">
-            {/* Nav Tabs */}
-            <div className="flex border-b border-[#27272A] gap-8 font-label-caps text-xs uppercase tracking-widest text-[#c5c6ca]">
-              <button
-                onClick={() => setActiveTab('overview')}
-                className={`pb-3 ${activeTab === 'overview' ? 'text-white border-b-2 border-emerald-400 font-bold' : 'hover:text-white'}`}
-              >
-                01 / Overview & Solution
-              </button>
-              <button
-                onClick={() => setActiveTab('impact')}
-                className={`pb-3 ${activeTab === 'impact' ? 'text-white border-b-2 border-emerald-400 font-bold' : 'hover:text-white'}`}
-              >
-                02 / Key Metrics & Impact
-              </button>
-              <button
-                onClick={() => setActiveTab('architecture')}
-                className={`pb-3 ${activeTab === 'architecture' ? 'text-white border-b-2 border-emerald-400 font-bold' : 'hover:text-white'}`}
-              >
-                03 / System Architecture
-              </button>
-            </div>
 
             {/* Tab 1: Overview */}
             {activeTab === 'overview' && (
@@ -263,7 +207,6 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
               </div>
             )}
           </div>
-        )}
       </div>
     </div>
   );

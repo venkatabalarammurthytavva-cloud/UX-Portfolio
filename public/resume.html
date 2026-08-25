@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tavva Balaram - Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-blue: #1E2994;
+      --text-main: #141518;
+      --text-muted: #3a3b40;
+      --text-light: #5a5b62;
+      --border-color: #d1d5db;
+      --bg-page: #eaedf2;
+      --sheet-bg: #ffffff;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.48;
+      padding: 24px 16px 60px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .top-actions {
+      max-width: 840px;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(0,0,0,0.14);
+      background: #ffffff;
+      color: #17181c;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    .btn:hover {
+      background: #f3f4f8;
+      border-color: #bcc0ce;
+      transform: translateY(-1px);
+    }
+    .btn-primary {
+      background: #1E2994;
+      color: #ffffff;
+      border-color: #1E2994;
+    }
+    .btn-primary:hover {
+      background: #151d6d;
+      border-color: #151d6d;
+      color: #ffffff;
+    }
+    .resume-container {
+      max-width: 840px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .resume-page {
+      background: var(--sheet-bg);
+      padding: 48px 52px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+      border-radius: 6px;
+      min-height: 1120px;
+      position: relative;
+    }
+    .header-name {
+      color: var(--primary-blue);
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .header-sub1 {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #1c1d22;
+      margin-bottom: 3px;
+      letter-spacing: -0.01em;
+    }
+    .header-sub2 {
+      font-size: 13px;
+      font-weight: 500;
+      color: #2b2c32;
+      margin-bottom: 10px;
+    }
+    .header-meta {
+      font-size: 11.5px;
+      color: #383a42;
+      line-height: 1.5;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 20px;
+    }
+    .header-meta a {
+      color: #1E2994;
+      text-decoration: none;
+    }
+    .header-meta a:hover {
+      text-decoration: underline;
+    }
+    .header-meta span.sep {
+      margin: 0 5px;
+      color: #9ca3af;
+    }
+    .section-heading {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--primary-blue);
+      margin-bottom: 10px;
+      margin-top: 20px;
+    }
+    .section-heading:first-of-type {
+      margin-top: 0;
+    }
+    .summary-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+    .job-entry {
+      margin-bottom: 20px;
+    }
+    .job-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+    .company-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #141518;
+    }
+    .job-subtitle {
+      font-size: 12.5px;
+      font-style: italic;
+      color: #4b4d55;
+      margin-bottom: 8px;
+    }
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 8px;
+    }
+    .bullet-list li {
+      position: relative;
+      padding-left: 14px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.58;
+      margin-bottom: 6px;
+      text-align: justify;
+    }
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #2b2c32;
+      font-size: 13px;
+      line-height: 1.2;
+    }
+    .selected-projects {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #222329;
+      margin-top: 6px;
+    }
+    .selected-projects span.label {
+      font-weight: 700;
+      color: #141518;
+    }
+    .product-block {
+      margin-bottom: 16px;
+    }
+    .product-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #141518;
+      margin-bottom: 4px;
+    }
+    .product-detail {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 3px;
+      text-align: justify;
+    }
+    .product-detail strong {
+      color: #141518;
+      font-weight: 600;
+    }
+    .skill-block {
+      margin-bottom: 12px;
+    }
+    .skill-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #141518;
+      display: inline;
+    }
+    .skill-items {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      display: inline;
+      line-height: 1.58;
+    }
+    .edu-text {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .edu-text strong {
+      color: #141518;
+    }
+    .cert-text {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    @media (max-width: 768px) {
+      .resume-page {
+        padding: 32px 24px;
+        min-height: auto;
+      }
+      .header-name {
+        font-size: 28px;
+      }
+      .top-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-group {
+        justify-content: flex-start;
+      }
+    }
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .top-actions {
+        display: none !important;
+      }
+      .resume-container {
+        gap: 0;
+        max-width: 100%;
+      }
+      .resume-page {
+        box-shadow: none;
+        padding: 36px 40px;
+        border-radius: 0;
+        min-height: auto;
+        page-break-after: always;
+      }
+      .resume-page:last-child {
+        page-break-after: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-actions">
+    <a href="/" class="btn">← Back to Portfolio</a>
+    <div class="btn-group">
+      <button onclick="window.print()" class="btn">🖨 Print / Save as PDF</button>
+      <a href="/Balaram.tavva_Resume.pdf" download="Balaram.tavva_Resume.pdf" class="btn btn-primary">⬇ Download PDF</a>
+    </div>
+  </div>
+
+  <div class="resume-container">
+    <!-- PAGE 1 -->
+    <div class="resume-page">
+      <header>
+        <h1 class="header-name">Tavva Balaram</h1>
+        <div class="header-sub1">Senior Product Designer | Enterprise UX | FinTech & Banking | B2B SaaS | UX Research</div>
+        <div class="header-sub2">5+ Years | Web & Mobile | Complex Workflows | Data & Analytics | Design Systems</div>
+        <div class="header-meta">
+          <strong>Portfolio:</strong> <a href="https://tavvabalaram.super.site/" target="_blank" rel="noopener noreferrer">https://tavvabalaram.super.site/</a><span class="sep">|</span>
+          <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/t-balaram" target="_blank" rel="noopener noreferrer">linkedin.com/in/t-balaram</a><span class="sep">|</span>
+          <strong>Email:</strong> <a href="mailto:venkatabalarammurthy.tavva@gmail.com">venkatabalarammurthy.tavva@gmail.com</a><span class="sep">|</span>
+          <strong>Phone:</strong> +91 9010970346<span class="sep">|</span>
+          Hyderabad, Open to relocation
+        </div>
+      </header>
+
+      <section>
+        <h2 class="section-heading">PROFESSIONAL SUMMARY</h2>
+        <p class="summary-text">
+          Senior UX/Product Designer with 5+ years of experience solving complex user and business problems across FinTech, Banking, Enterprise SaaS, AI, Analytics, and B2B products. Specialized in transforming legacy, offline, fragmented, and data-intensive workflows into intuitive web and mobile experiences through UX research, information architecture, interaction design, prototyping, usability evaluation, and design systems. Partners with Product, Engineering, Business, and domain teams to turn evidence into design decisions that improve user experiences and support business outcomes.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="section-heading">WORK EXPERIENCE</h2>
+
+        <!-- Job 1 -->
+        <article class="job-entry">
+          <div class="job-title-row">
+            <span class="company-name">NeoSOFT Technologies | Remote</span>
+          </div>
+          <div class="job-subtitle">UI/UX Designer, March 2024 - Present</div>
+          <ul class="bullet-list">
+            <li>Started with field research and real users, visiting Mumbai retail stores for HMart and later working directly with banking customers, investigators, investors, and Relationship Managers to understand problems before designing solutions.</li>
+            <li>Moved into increasingly complex domains—Banking, Public Safety, and Wealth Management—learning each business deeply enough to redesign workflows rather than simply interfaces, from investigative crime analysis to Axis AMC's offline-to-digital transformation.</li>
+            <li>Turned research into products that solve real operational problems, using interviews, surveys, competitive analysis, feature prioritization, IA, user flows, prototyping, and validation while working closely with Product, Business, Engineering, and domain stakeholders through implementation. My 2025–2026 BOB UX Audit informed UX improvements across digital banking products that achieved <strong>30% faster loan processing</strong> through AI-driven credit evaluation.</li>
+          </ul>
+          <div class="selected-projects">
+            <span class="label">Selected Projects:</span> Axis AMC • Bank of Baroda UX Audit • Crime Analytics Platform • HMart Retail App
+          </div>
+        </article>
+
+        <!-- Job 2 -->
+        <article class="job-entry">
+          <div class="job-title-row">
+            <span class="company-name">Qentelli Solutions | Hyderabad</span>
+          </div>
+          <div class="job-subtitle">Senior CX Designer, Promoted during tenure, February 2022 - March 2024</div>
+          <ul class="bullet-list">
+            <li>Became the sole designer responsible for TED and Maturity Assessment, partnering with the Product Architect and regularly engaging VP and CEO stakeholders to shape the in-house product.</li>
+            <li>Shaped TED from product definition through execution, driving competitive analysis, feature prioritization, AI-powered Value Stream Intelligence, ACM, dashboards, metrics, API-based integrations across 200+ platforms, and the design system built from scratch.</li>
+            <li>Earned promotion to Senior CX Designer, while mentoring designers and contributing across KONA, MYnilpay, mobile testing, and banking initiatives alongside TED ownership. TED helped clients achieve <strong>30% higher productivity</strong>.</li>
+          </ul>
+          <div class="selected-projects">
+            <span class="label">Selected Projects:</span> TED + Maturity Assessment • KONA by Brierly & Partners
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="resume-page">
+      <section>
+        <!-- Job 3 -->
+        <article class="job-entry" style="margin-top: 0;">
+          <div class="job-title-row">
+            <span class="company-name">Get Infy Solutions | Hyderabad</span>
+          </div>
+          <div class="job-subtitle">UI/UX Designer, February 2021 - February 2022</div>
+          <ul class="bullet-list">
+            <li>Started my career with limited real-world product experience and quickly learned how software businesses actually work, moving from a 15-year-old lending platform into FinTech, IoT/B2B marketplaces, Automotive, and other enterprise products.</li>
+            <li>Earned client trust through problem solving rather than aesthetics, using real user feedback and competitive analysis on Q-Fund to simplify difficult lending tasks, while simultaneously taking on the IoT Marketplace and mentoring three new trainees.</li>
+            <li>Grew from designing screens to taking ownership of product thinking, contributing across lending, warehouse operations, marketplaces, automotive dashboards, portfolio management, crypto, and financial products while working within Scrum and engineering constraints. Q-Fund's platform supported <strong>$28B+</strong> in total disbursements.</li>
+          </ul>
+          <div class="selected-projects">
+            <span class="label">Selected Projects:</span> Q-Fund • Marketlinq • Finovate • Trepont.ai
+          </div>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="section-heading">FEATURED PRODUCTS</h2>
+        
+        <div class="product-block">
+          <div class="product-title">01 — AXIS AMC – DIGITAL TRANSFORMATION | Wealth Management • FinTech • Web + Mobile</div>
+          <div class="product-detail"><strong>Problem:</strong> Fragmented offline investment processes. <strong>Approach:</strong> User/stakeholder research + workflow analysis.</div>
+          <div class="product-detail"><strong>Solution:</strong> Designed digital journeys, IA, flows and wireframes for GIFT City & MSME portals. <strong>Impact:</strong> Contributed to digital self-service initiatives across a ₹3.6L+ crore QAAUM ecosystem.</div>
+        </div>
+
+        <div class="product-block">
+          <div class="product-title">02 — CRIME ANALYTICS PLATFORM | Public Safety • Enterprise Analytics • Data Visualization • NDA</div>
+          <div class="product-detail"><strong>Problem:</strong> Investigators struggled to connect fragmented crime intelligence. <strong>Approach:</strong> Investigative workflow analysis + competitive research. <strong>Solution:</strong> Designed crime dashboards, CompStat, criminal associations, maps, search and records.</div>
+          <div class="product-detail"><strong>Scale & Commercial Impact:</strong> 1B+ records across 2,100+ agencies | Major commercial deals valued at ~$2.5M.</div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-heading">CORE EXPERTISE AND TOOLS</h2>
+        
+        <div class="skill-block">
+          <div class="skill-title">Product & UX: </div>
+          <div class="skill-items">UX Strategy • Product Thinking • Product Discovery • User-Centered Design • Human-Centered Design • Design Thinking • Customer Journeys • Journey Mapping • Enterprise UX • Mobile UX • Responsive Design • Data-Informed Design</div>
+        </div>
+
+        <div class="skill-block">
+          <div class="skill-title">Research, Systems & Delivery: </div>
+          <div class="skill-items">Heuristic Evaluation • Affinity Mapping • Card Sorting • Design Tokens • Component Libraries • Accessibility • WCAG • Developer Collaboration</div>
+        </div>
+
+        <div class="skill-block">
+          <div class="skill-title">Tools: </div>
+          <div class="skill-items">Figma • FigJam • Miro • Adobe XD • Balsamiq • Photoshop • Illustrator • Jira • Confluence • Notion • Zeplin • ChatGPT • Claude • Gemini • Cursor • v0 • Figma AI • FigJam AI • Notion AI</div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-heading">EDUCATION</h2>
+        <div class="edu-text">
+          <strong>GMR Institute of Technology, Rajam</strong> — B.Tech, Power Engineering | 2015–2019.
+        </div>
+      </section>
+
+      <section style="margin-top: 18px;">
+        <h2 class="section-heading">CERTIFICATIONS</h2>
+        <div class="cert-text">
+          Google UX Design • IBM Enterprise Design Thinking Co-Creator • Design Thinking – Udemy
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

@@ -45,17 +45,8 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, onSelec
         </p>
       </div>
 
-      {/* Bottom Actions & Tags */}
-      <div className="relative z-10 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 mt-8 pt-4 border-t border-white/10">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="font-label-caps text-[11px] uppercase tracking-widest text-[#c5c6ca]">
-            Team: {caseStudy.team}
-          </span>
-          <span className="px-3 py-1 bg-white/10 rounded-full border border-white/15 font-label-caps text-[10px] uppercase tracking-widest text-white">
-            {caseStudy.category}
-          </span>
-        </div>
-
+      {/* Bottom Actions & Tags - Aligned to Left */}
+      <div className="relative z-10 flex flex-col sm:flex-row justify-start items-start sm:items-center gap-4 sm:gap-6 mt-8 pt-4 border-t border-white/10">
         <button 
           onClick={(e) => {
             e.stopPropagation();
@@ -64,10 +55,19 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy, onSelec
           className="flex items-center gap-2 px-6 py-3 border border-white/20 rounded-full bg-white/5 backdrop-blur-md hover:bg-white/15 group-hover:border-emerald-400/50 transition-all text-xs font-label-caps uppercase tracking-widest text-white shadow-lg"
         >
           <span className="material-symbols-outlined text-sm text-emerald-400">
-            {caseStudy.isLocked ? 'lock' : 'visibility'}
+            visibility
           </span>
           <span>View case study</span>
         </button>
+
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="font-label-caps text-[11px] uppercase tracking-widest text-[#c5c6ca]">
+            Team: {caseStudy.team}
+          </span>
+          <span className="px-3 py-1 bg-white/10 rounded-full border border-white/15 font-label-caps text-[10px] uppercase tracking-widest text-white">
+            {caseStudy.category}
+          </span>
+        </div>
       </div>
     </div>
   );

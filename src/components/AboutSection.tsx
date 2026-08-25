@@ -64,13 +64,22 @@ export const AboutSection: React.FC = () => {
             With over 5 years of hands-on experience, I bridge the gap between high-level user research, intricate FinTech workflows, and production-ready React component libraries. My approach focuses on scalability, WCAG accessibility, and eliminating cognitive friction.
           </p>
 
-          <div className="flex flex-wrap gap-3 pt-2">
+          <div className="flex flex-wrap gap-3 pt-2 items-center">
             <span className="px-3 py-1 bg-[#27272A] text-white font-label-caps text-xs rounded-full">
               📍 Hyderabad, India
             </span>
             <span className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-label-caps text-xs rounded-full">
               🟢 Open to Select Design Systems Consultancies
             </span>
+            <a
+              href="/Balaram.tavva_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-1.5 bg-white text-black font-semibold text-xs rounded-full hover:bg-neutral-200 transition-all flex items-center gap-1.5 shadow-md hover:scale-105 active:scale-95"
+            >
+              <span>View Resume (PDF)</span>
+              <span>↗</span>
+            </a>
           </div>
         </div>
 

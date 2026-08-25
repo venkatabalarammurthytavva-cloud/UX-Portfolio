@@ -32,14 +32,15 @@ app.post("/api/chat", async (req, res) => {
     }
 
     const ai = getGenAI();
-    const systemInstruction = `You are Balaram's AI Assistant (Portfolio Twin). Balaram is a Senior Product & Systems Designer with 5+ years of experience, 10+ completed enterprise projects, and over 15L+ users served with 0 escalations.
-He has worked at top tech companies including NeoSOFT, Qentelli, and Get Infy Solutions.
-Key Projects:
-1. Aether Capital: Enterprise FinTech Loan Management Workflow (Automated underwriting, risk management, loan processing).
-2. Investment & Wealth Portal: Premium Wealth Management Dashboard with real-time portfolio tracking and asset allocation.
-3. Multi-Brand Design System: 4,000+ Reusable Tokenized Components in Figma & React.
-4. Mobile Banking Redesign: Precision UX flows for mobile banking, reducing transaction friction by 34%.
-5. E-commerce Checkout Flow: Optimizing conversion for global retail.
+    const systemInstruction = `You are Balaram's AI Assistant (Portfolio Twin). Balaram (Tavva Balaram) is a Senior Product Designer & Enterprise UX Specialist with 5+ years of experience across FinTech, Banking, Enterprise SaaS, AI, Analytics, and B2B products.
+Companies & Career:
+- NeoSOFT Technologies (March 2024 - Present): UI/UX Designer leading Axis AMC digital transformation (GIFT City & MSME portals across ₹3.6L+ Cr QAAUM ecosystem), Crime Analytics Platform (1B+ records, 2,100+ agencies, ~$2.5M deals), Bank of Baroda UX Audit (30% faster loan processing via AI credit evaluation), and HMart retail field research in Mumbai.
+- Qentelli Solutions (Feb 2022 - March 2024): Senior CX Designer (Promoted), sole designer for TED & Maturity Assessment, AI-powered Value Stream Intelligence, ACM, 200+ API platform integrations, design systems from scratch, helping clients achieve 30% higher productivity. Also contributed to KONA by Brierly & Partners.
+- Get Infy Solutions (Feb 2021 - Feb 2022): UI/UX Designer modernizing Q-Fund lending platform ($28B+ disbursements), IoT Marketplaces, automotive dashboards, crypto, and design systems.
+
+Core Skills: UX Strategy, User-Centered Design, Complex Workflows, Information Architecture, Wireframing & Prototyping, Design Systems, Design Tokens, Component Libraries, WCAG AAA Accessibility, Figma, FigJam, AI-Assisted Design (ChatGPT, Claude, Gemini, Cursor, v0, Figma AI).
+Education: B.Tech in Power Engineering from GMR Institute of Technology, Rajam (2015-2019).
+Certifications: Google UX Design, IBM Enterprise Design Thinking Co-Creator, Design Thinking (Udemy).
 
 Personality: Concise, articulate, professional, technical, friendly, and enthusiastic about design systems, fintech, music production, and UI engineering.
 Keep responses clear, well-structured, and concise.`;
@@ -66,6 +67,22 @@ Keep responses clear, well-structured, and concise.`;
       fallbackText: "I'm Balaram's Portfolio Assistant. Balaram specializes in FinTech systems, design tokens, and high-impact enterprise UX. Feel free to explore his selected work, test out the live Design System Explorer, or drop a message in the Contact tab!"
     });
   }
+});
+
+// Static routes for Resume PDF & HTML View
+const publicPath = path.join(process.cwd(), "public");
+app.use(express.static(publicPath));
+
+app.get(["/Balaram.tavva_Resume.pdf", "/resume.pdf", "/Tavva_Balaram_Resume.pdf"], (req, res) => {
+  const pdfFile = path.join(publicPath, "Balaram.tavva_Resume.pdf");
+  res.setHeader("Content-Type", "application/pdf");
+  res.setHeader("Content-Disposition", 'inline; filename="Balaram.tavva_Resume.pdf"');
+  res.sendFile(pdfFile);
+});
+
+app.get("/resume", (req, res) => {
+  const htmlFile = path.join(publicPath, "resume.html");
+  res.sendFile(htmlFile);
 });
 
 async function startServer() {

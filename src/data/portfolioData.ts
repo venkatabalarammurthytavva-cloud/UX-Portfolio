@@ -13,7 +13,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     team: "Aether Design",
     bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC6IyGnRO45FgZwfYbRih8muYvuOYFinC5Xn9aJYPMp8_VqAe6W4yy8vJT_giQsRqdiRdYSXiGKQOqTIBbXLnZyYsg40w4mvgDNpnkVj6wjLvCq0FVnZKwXuQOaTjuWSq_da4_ynK0e-KqY-dKema2kqQg8ihtTl-AXF2Q-rEX_B4Kwv_6Dh7b7-_jdAbQdzL8SUa_l5ySt-onZAUiFFW92HmAayuhQjyD7ETtRPVh2GpLOvvFEzZ0",
     logoUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuD_p6isciRFlpsYDUfeaHm7O6iUEd-fukuuz6WDAHzeveMnZk9wGXI2GgT76x2D4PhtL6GkkDIXHtTKI_sg_yKWqRFqoMq_LUZTL-tcATfxcPR1AMWVYDqbovi-lr9hxOx-heasUF79sVqvEPVwwx_GCts6XpPeNcBXVPg1Fb3lwDqymJgNxyXQtIO_rLVtpG7OkRgyzJL6NrOsfcoL56LR9tcugocuApOKNQPYA1k6lXnu_jyyyRg",
-    isLocked: true,
+    isLocked: false,
     metrics: [
       { label: "Loan Approval Speed", value: "3.4x Faster" },
       { label: "Underwriting Errors", value: "-68%" },
@@ -47,7 +47,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     team: "Wealth UX",
     bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDOhkfCwtrRf8HPfeMkS2tWefo1eoOJGQiqUQJmFDCmrHRw_MhVh6bodQMxPAh7UrCMkffgX83jcTeAnr-NdrjdmQSH_fwjmrSdEANmzreRUVQ5zMFbwWrpM3Ze8QnTfoK2k9P2vHVHVONCbR8ZPqD4b9043ZZyuDiPwwoFUqNe-U-oZWUBcH6VD_7_dj1GoQ2kwEkgXcjynSoaFila-LFXrc6rq5IYgaWVjTd-xQ88MLl9TFNOuFE",
     icon: "account_balance_wallet",
-    isLocked: true,
+    isLocked: false,
     metrics: [
       { label: "AUM Monitored", value: "$14.8B" },
       { label: "Daily Active Users", value: "420K" },
@@ -81,7 +81,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     team: "Design Ops",
     bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuAyOlC1Cx1rvnSEKGHI0gwZffAoB5d27AZMpFLSMgSdvOtJ5pK2sh2ReERmrfGwjo6T-YBvR0uUW-sU8z7DMAy7jF4IQm1k2avBpfZQNNG0Uokc_gGIPTKm72aymBmhZOpNSjomWXVgAfYsUTkk8zDa2ocjC6mvLNp-4CLXWuIPMnT0SW58fc2Vhwk2ZK4M2ZrRixxzBI-LxxJcKdA2P6htDXFn63K7cSXfNVQ8nRKM5y4imhfkBOI",
     icon: "category",
-    isLocked: true,
+    isLocked: false,
     metrics: [
       { label: "Reusable Components", value: "4,000+" },
       { label: "Teams Onboarded", value: "18 Product Teams" },
@@ -115,7 +115,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     team: "Microsoft AI / Banking",
     bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBs6JqU7zEsNM0g3iGR9iM37zzpwHvmrDtfucXvdtEadz5j801Co8ZarYSaYamOV4A3dl2PZ97lDSVyZwxvPAR33Pod1sZGdq7owIr9HBYi8L0FKE1A1a6mZ9--0mTjKm6n9L8PyJwThLQHxo4vf6GtVTYwLOrnB-if9mDjCKypCbP9CRGZ9YxhZY_IGDYIrpdqu9KfiLThX8JuP9qda6k1KFbolUGpg2NIzUHuZLWqlikzJBLiGww",
     logoUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuD_p6isciRFlpsYDUfeaHm7O6iUEd-fukuuz6WDAHzeveMnZk9wGXI2GgT76x2D4PhtL6GkkDIXHtTKI_sg_yKWqRFqoMq_LUZTL-tcATfxcPR1AMWVYDqbovi-lr9hxOx-heasUF79sVqvEPVwwx_GCts6XpPeNcBXVPg1Fb3lwDqymJgNxyXQtIO_rLVtpG7OkRgyzJL6NrOsfcoL56LR9tcugocuApOKNQPYA1k6lXnu_jyyyRg",
-    isLocked: true,
+    isLocked: false,
     metrics: [
       { label: "App Store Rating", value: "4.9 / 5.0" },
       { label: "Transfer Friction", value: "-34%" },
@@ -149,7 +149,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     team: "Commerce UX",
     bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC2m-CnPtExm6XD7OpRaq_fSA76XhQHzMNaAwIFsjIUcQL7jgRT_xj5WldMlZBAy1PIWcOiK7nm1TFdkttz3qjnpdBhGbVkAlBPHexr4MaIzEX5w8fQGi_FDhmY-f7yj7RieD7Nhexjn_gniVbsFeYz0YUL_TGIZTW4yx6qBzF7VGq8Z70GBO8R5ZwUkZLzcPJc_hCTrrMQp8gXu96JmVLLgIMOCFzcZDZZXBh0bXdN31rOuP4D0Ig",
     icon: "shopping_cart",
-    isLocked: true,
+    isLocked: false,
     metrics: [
       { label: "Checkout Conversion", value: "+28.4%" },
       { label: "Cart Abandonment", value: "-19%" },
@@ -179,28 +179,43 @@ export const CASE_STUDIES: CaseStudy[] = [
 
 export const WORK_EXPERIENCE = [
   {
-    role: "Senior Systems & Product Designer",
-    company: "NeoSOFT",
-    period: "2023 - Present",
-    location: "Hyderabad, India",
-    description: "Leading enterprise FinTech UI architecture, multi-brand design system operations, and mentoring junior UI/UX engineers. Designing complex loan management and trading platforms.",
-    highlights: ["Built Architect Enterprise Design System", "Shipped 6 enterprise portals", "Achieved 100% WCAG AAA compliance"]
+    role: "UI/UX Designer",
+    company: "NeoSOFT Technologies",
+    period: "March 2024 - Present",
+    location: "Remote",
+    description: "Led user research and complex workflow redesigns across Banking, Wealth Management, Public Safety, and Retail. Bank of Baroda UX audit informed improvements achieving 30% faster loan processing via AI credit evaluation; designed Axis AMC GIFT City/MSME digital journeys across ₹3.6L+ Cr QAAUM ecosystem; UI architecture for Crime Analytics Platform (1B+ records across 2,100+ agencies).",
+    highlights: [
+      "Axis AMC ₹3.6L+ Cr digital transformation",
+      "Bank of Baroda UX audit (30% faster loan processing)",
+      "Crime Analytics Platform (~$2.5M commercial deals)",
+      "HMart retail store field research in Mumbai"
+    ]
   },
   {
-    role: "UI/UX Product Specialist",
-    company: "Qentelli",
-    period: "2021 - 2023",
+    role: "Senior CX Designer (Promoted)",
+    company: "Qentelli Solutions",
+    period: "February 2022 - March 2024",
     location: "Hyderabad, India",
-    description: "Spearheaded user research, rapid interactive prototyping, and cross-platform mobile banking redesigns for Fortune 500 financial institutions.",
-    highlights: ["Redesigned retail banking app for 2M+ active users", "Reduced user drop-off by 34%", "Led client design workshops"]
+    description: "Sole designer responsible for TED and Maturity Assessment partnering with Product Architect, VP, and CEO stakeholders. Shaped AI-powered Value Stream Intelligence, ACM, dashboards, API integrations across 200+ platforms, and design system from scratch. TED helped clients achieve 30% higher productivity.",
+    highlights: [
+      "Sole designer for TED & Maturity Assessment",
+      "AI-powered Value Stream Intelligence & 200+ API integrations",
+      "Design system architected from scratch",
+      "Helped clients achieve 30% higher productivity"
+    ]
   },
   {
-    role: "UI Designer & Developer",
+    role: "UI/UX Designer",
     company: "Get Infy Solutions",
-    period: "2019 - 2021",
+    period: "February 2021 - February 2022",
     location: "Hyderabad, India",
-    description: "Crafted high-converting e-commerce web applications, visual design guidelines, and interactive dashboard UI components.",
-    highlights: ["Designed 15+ SaaS and e-commerce platforms", "Created custom icon sets and illustration libraries"]
+    description: "Simplified complex lending workflows for Q-Fund supporting $28B+ in total disbursements. Designed screens and took ownership of product thinking across lending, warehouse operations, IoT marketplaces, automotive dashboards, crypto, and financial products while mentoring trainees.",
+    highlights: [
+      "Q-Fund lending platform ($28B+ disbursements)",
+      "IoT Marketplace & automotive dashboard UX",
+      "Mentored trainees & built reusable UI kits",
+      "Selected projects: Q-Fund, Marketlinq, Finovate, Trepont.ai"
+    ]
   }
 ];
 

@@ -46,6 +46,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             Medium
           </a>
           <a
+            href="/Balaram.tavva_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-emerald-400 hover:text-white transition-colors"
+          >
+            Resume ↗
+          </a>
+          <a
             href="mailto:venkatabalarammurthy.tavva@gmail.com"
             className="text-[#c5c6ca] hover:text-white transition-colors"
           >
