@@ -49,10 +49,10 @@ export const Hero: React.FC = () => {
           <span className="font-label-caps text-[10px] uppercase tracking-widest text-[#e2e3e7]">Projects Completed</span>
         </div>
 
-        {/* Stat 3: 15L+ Users */}
+        {/* Stat 3: 9+ Domains */}
         <div className="absolute top-[14%] right-[6%] rotate-[-2deg] animate-float-slow bg-[#0D0D0E]/80 backdrop-blur-xl border border-white/15 p-5 rounded-xl flex flex-col items-center pointer-events-auto hover:border-white/30 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.5)]">
-          <span className="font-display text-4xl font-bold text-[#10b981] mb-1">15L+</span>
-          <span className="font-label-caps text-[10px] uppercase tracking-widest text-[#e2e3e7]">Users Served</span>
+          <span className="font-display text-4xl font-bold text-[#10b981] mb-1">9+</span>
+          <span className="font-label-caps text-[10px] uppercase tracking-widest text-[#e2e3e7]">DOMAINS</span>
         </div>
 
         {/* Stat 4: 0 Escalations */}
@@ -93,8 +93,8 @@ export const Hero: React.FC = () => {
             <div className="text-[10px] font-label-caps text-zinc-300 uppercase">Projects</div>
           </div>
           <div className="bg-[#1A1A1C] border border-[#27272A] p-3 rounded-lg text-center">
-            <div className="text-2xl font-bold text-[#10b981]">15L+</div>
-            <div className="text-[10px] font-label-caps text-zinc-300 uppercase">Users</div>
+            <div className="text-2xl font-bold text-[#10b981]">9+</div>
+            <div className="text-[10px] font-label-caps text-zinc-300 uppercase">Domains</div>
           </div>
           <div className="bg-[#1A1A1C] border border-[#27272A] p-3 rounded-lg text-center">
             <div className="text-2xl font-bold text-white">0</div>
