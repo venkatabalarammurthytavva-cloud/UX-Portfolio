@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CaseStudy } from '../types';
+import { BankOfBarodaLogo, AxisAMCLogo } from './BrandLogos';
 
 interface CaseStudyModalProps {
   caseStudy: CaseStudy | null;
@@ -71,9 +72,17 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
         <div className="relative h-64 sm:h-80 w-full overflow-hidden bg-cover bg-center" style={{ backgroundImage: `url("${caseStudy.bgImage}")` }}>
           <div className="absolute inset-0 bg-gradient-to-t from-[#141313] via-[#141313]/60 to-transparent pointer-events-none" aria-hidden="true"></div>
           <div className="absolute bottom-6 left-6 right-6">
-            <h2 id="modal-case-study-title" className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-2">
-              {caseStudy.title}
-            </h2>
+            <div className="flex items-center gap-3.5 mb-2">
+              {caseStudy.id === 'bank-of-baroda-ux-audit' && (
+                <BankOfBarodaLogo className="h-9 sm:h-11 w-auto" />
+              )}
+              {caseStudy.id === 'axis-amc-wealth' && (
+                <AxisAMCLogo className="h-9 sm:h-11 w-auto" />
+              )}
+              <h2 id="modal-case-study-title" className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight">
+                {caseStudy.title}
+              </h2>
+            </div>
             <p className="font-body-md text-base sm:text-xl text-zinc-200 max-w-2xl">
               {caseStudy.subtitle}
             </p>

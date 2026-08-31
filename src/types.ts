@@ -2,9 +2,10 @@ export interface CaseStudy {
   id: string;
   title: string;
   subtitle: string;
-  category: 'Enterprise' | 'FinTech' | 'System' | 'Feature' | 'Conversion';
+  category: 'Enterprise' | 'Banking UX' | 'Wealth Management' | 'Enterprise Platform' | 'Big Data & Analytics' | 'FinTech' | 'System' | 'Feature' | 'Conversion';
   team: string;
   bgImage: string;
+  indexNumber?: string;
   logoUrl?: string;
   icon?: string;
   isLocked?: boolean;
@@ -39,6 +40,20 @@ export interface MusicTrack {
   key: string;
   audioSampleUrl: string;
   coverArt: string;
+}
+
+export interface MusicPlatformPlaylist {
+  id: string;
+  platform: 'Spotify' | 'YouTube Music' | 'SoundCloud';
+  title: string;
+  curatorNote: string;
+  url: string;
+  embedUri?: string;
+  trackCount: string;
+  genreTag: string;
+  featuredTracks: string[];
+  themeColor: string;
+  badge: string;
 }
 
 export interface ShopItem {

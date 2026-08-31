@@ -1,178 +1,297 @@
-import { CaseStudy, ShopItem, MusicTrack, DesignToken } from '../types';
+import { CaseStudy, ShopItem, MusicTrack, DesignToken, MusicPlatformPlaylist } from '../types';
+import tedVisual from '../assets/images/ted_platform_visual_1788106429517.jpg';
+import bobVisual from '../assets/images/bob_banking_audit_1788106457893.jpg';
+import axisVisual from '../assets/images/axis_amc_wealth_1788106472766.jpg';
+import finovationVisual from '../assets/images/finovation_platform_1788106489570.jpg';
+import crimeVisual from '../assets/images/crime_analytics_visual_1788106508732.jpg';
 
-export const PROFILE_IMAGE = "https://lh3.googleusercontent.com/aida-public/AB6AXuAxjzu35L6fm9qqspWudfz0VVyKKF0k8iwwMHHHQ00rsV2bdjO2qPgDfFNwKoslTHCzillxtn9gv648xxbhcAe4atveTQq3EnuqJNsFVp97QpCk06C9k6mtO64XRu32tx1MPMI1tNgbeyhFZRgcRbOMZ5gDTo6J8Rbc6v-Kl4riYN5Q_Hu73vYqLhAfh9F8pMZKp2U4QikdTfuVjebu0FS_gFhb8CqUbkfe9s53LiKyZoAVBG4Hc3VQYZh1iJAWWDlM";
+export const PROFILE_IMAGE = "https://lh3.googleusercontent.com/aida-public/AB6AXuCfyn6AHFwsnb8ed7fqgaJGMHPFsXxZds6ejl0tDmO1tHjyCpgc2BCmZBlbSI0vQ_xCWpuiMvP9KZv23C_coIlbTNR96LdwCurHmYs3wE_ssic7qTj4e3_jolxtUOWms8mYyvxEJ_7tbJ3NHLm-VTQbsyiiKbT76iZokRYzNqZXBrsz3xYCQiE71mTbDoWpx77Jrqhq7Nac3EhK-R46R8Ls_clzVgDf6fqVlcNcBDeckfeTl5V2nIR50algAyaw4X61";
 
 export const HERO_BACKGROUND = "https://lh3.googleusercontent.com/aida-public/AB6AXuAwhEON2og8ZPNVuO26a1T7ggEDuhoGOvdGW6stKVzOPZVneFgtL_HdTCDp8_vVpmEb7nDxdkjrNT7gZVoAOqeKJxGnUIs7mEmzBMaa2Wkc12olnHOYdac8PLBX9XP4Yager4pYsgM2U7AISQh17fG9_zkUkqaETbIcBWEZL2ZDXlT5keEnXzYcmLDyhyJIk0LtZrYKFDyYESjhTOnm3_62cIlJBGuq9gp1ZWfwO4f7tVgMtGA1dw0";
 
+export interface ClientItem {
+  name: string;
+  scope: string;
+  isFeatured?: boolean;
+}
+
+export interface DomainCapability {
+  id: string;
+  icon: string;
+  title: string;
+  description: string;
+  highlight: string;
+}
+
+export const SELECTED_CLIENTS: ClientItem[] = [
+  {
+    name: "Bank of Baroda",
+    scope: "Mobile Banking · UX Transformation",
+    isFeatured: true
+  },
+  {
+    name: "Axis Asset Management Company",
+    scope: "Wealth Management · Investment Experience",
+    isFeatured: true
+  },
+  {
+    name: "Brierley+Partners",
+    scope: "Enterprise Platforms · Design Systems",
+    isFeatured: true
+  },
+  {
+    name: "Virnichi",
+    scope: "End-to-End Digital Product Experience"
+  },
+  {
+    name: "Airlinq",
+    scope: "Digital Product Experience · UX/UI"
+  },
+  {
+    name: "Himalaya",
+    scope: "Retail · Consumer Experience"
+  }
+];
+
+export const DOMAINS_WORKED_UPON: DomainCapability[] = [
+  {
+    id: "fintech",
+    icon: "account_balance",
+    title: "Fintech & Digital Banking",
+    description: "Banking journeys & financial products",
+    highlight: "Bank of Baroda · Axis AMC"
+  },
+  {
+    id: "wealth",
+    icon: "monitoring",
+    title: "Wealth & Asset Management",
+    description: "Investment & portfolio experiences",
+    highlight: "Axis AMC · Portfolio Management"
+  },
+  {
+    id: "lending",
+    icon: "payments",
+    title: "Lending & Loan Management",
+    description: "Credit workflows & loan operations",
+    highlight: "Q-Fund · Loan Management"
+  },
+  {
+    id: "payments",
+    icon: "credit_card",
+    title: "Payments & Financial Platforms",
+    description: "Transaction & payment experiences",
+    highlight: "MYnilpay"
+  },
+  {
+    id: "b2b-saas",
+    icon: "hub",
+    title: "B2B SaaS & Enterprise",
+    description: "Complex workflows & operational platforms",
+    highlight: "Enterprise SaaS · Operational Tools"
+  },
+  {
+    id: "compliance",
+    icon: "gavel",
+    title: "Compliance, Risk & Audit",
+    description: "Governance & regulated workflows",
+    highlight: "Compliance & Audit Platforms"
+  },
+  {
+    id: "analytics",
+    icon: "insights",
+    title: "Data Analytics & Intelligence",
+    description: "Decision-support & data visualization",
+    highlight: "Crime Analytics Platform"
+  },
+  {
+    id: "iot",
+    icon: "devices_other",
+    title: "IoT & Marketplace",
+    description: "Connected products & marketplace ecosystems",
+    highlight: "IoT Marketplace"
+  },
+  {
+    id: "retail",
+    icon: "shopping_bag",
+    title: "Retail & E-commerce",
+    description: "Customer journeys & retail experiences",
+    highlight: "Himalaya Retail"
+  },
+  {
+    id: "devtools",
+    icon: "terminal",
+    title: "Engineering & Developer Tools",
+    description: "Operational dashboards & engineering workflows",
+    highlight: "TED Engineering Dashboard"
+  },
+  {
+    id: "design-systems",
+    icon: "layers",
+    title: "Design Systems & Governance",
+    description: "Scalable systems & UX consistency",
+    highlight: "Kona · Brierley+Partners"
+  }
+];
+
 export const CASE_STUDIES: CaseStudy[] = [
   {
-    id: "aether-capital",
-    title: "Aether Capital",
-    subtitle: "Enterprise FinTech Loan Management Workflow",
+    id: "ted-ai-platform",
+    title: "TED",
+    subtitle: "AI-Powered Value Stream Intelligence & Enterprise Observability Platform",
     category: "Enterprise",
-    team: "Aether Design",
-    bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC6IyGnRO45FgZwfYbRih8muYvuOYFinC5Xn9aJYPMp8_VqAe6W4yy8vJT_giQsRqdiRdYSXiGKQOqTIBbXLnZyYsg40w4mvgDNpnkVj6wjLvCq0FVnZKwXuQOaTjuWSq_da4_ynK0e-KqY-dKema2kqQg8ihtTl-AXF2Q-rEX_B4Kwv_6Dh7b7-_jdAbQdzL8SUa_l5ySt-onZAUiFFW92HmAayuhQjyD7ETtRPVh2GpLOvvFEzZ0",
-    logoUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuD_p6isciRFlpsYDUfeaHm7O6iUEd-fukuuz6WDAHzeveMnZk9wGXI2GgT76x2D4PhtL6GkkDIXHtTKI_sg_yKWqRFqoMq_LUZTL-tcATfxcPR1AMWVYDqbovi-lr9hxOx-heasUF79sVqvEPVwwx_GCts6XpPeNcBXVPg1Fb3lwDqymJgNxyXQtIO_rLVtpG7OkRgyzJL6NrOsfcoL56LR9tcugocuApOKNQPYA1k6lXnu_jyyyRg",
+    indexNumber: "01 / 05",
+    team: "Enterprise Intelligence",
+    bgImage: tedVisual,
     isLocked: false,
     metrics: [
-      { label: "Loan Approval Speed", value: "3.4x Faster" },
-      { label: "Underwriting Errors", value: "-68%" },
-      { label: "Capital Deployed", value: "$1.18B" },
-      { label: "User Satisfaction", value: "98.4%" }
+      { label: "Engineering Velocity", value: "+30%" },
+      { label: "DevOps Tool Integrations", value: "200+" },
+      { label: "Telemetry Latency", value: "<1.2s" },
+      { label: "Design System", value: "0 to 1" }
     ],
-    overview: "Aether Capital required an end-to-end loan management workstation for institutional loan underwriters, risk analysts, and portfolio managers handling complex debt structures.",
-    challenge: "Institutional loan processing was bogged down by fragmented spreadsheets, legacy green-screen terminals, and high cognitive load leading to costly compliance and underwriting mistakes.",
-    solution: "Designed a dark-mode optimized, high-density dashboard system featuring automated risk telemetry, interactive debt waterfall charts, and streamlined multi-tier approval flows.",
+    overview: "Architected the zero-to-one product experience and comprehensive design system for TED, an AI-powered Value Stream Intelligence and maturity assessment workstation.",
+    challenge: "Enterprise engineering leaders lacked end-to-end visibility into software delivery bottlenecks across hundreds of disconnected developer tools and CI/CD pipelines.",
+    solution: "Engineered an intuitive intelligence suite featuring automated bottleneck discovery, proactive telemetry dashboards, and multi-tier developer productivity governance.",
     impact: [
-      "Reduced average loan origination cycle time from 14 days to 4 days.",
-      "Eliminated manual spreadsheet reconciliation across 1,200+ daily loan entries.",
-      "Adopted by 45+ institutional debt funds across North America."
+      "Enabled client organizations to achieve 30% higher development velocity and workflow transparency.",
+      "Unified telemetry pipelines from 200+ developer platforms into actionable executive insights.",
+      "Built scalable design token architecture and component library from the ground up."
     ],
-    tags: ["FinTech", "Enterprise UX", "Design Systems", "Data Visualization"],
-    galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC6IyGnRO45FgZwfYbRih8muYvuOYFinC5Xn9aJYPMp8_VqAe6W4yy8vJT_giQsRqdiRdYSXiGKQOqTIBbXLnZyYsg40w4mvgDNpnkVj6wjLvCq0FVnZKwXuQOaTjuWSq_da4_ynK0e-KqY-dKema2kqQg8ihtTl-AXF2Q-rEX_B4Kwv_6Dh7b7-_jdAbQdzL8SUa_l5ySt-onZAUiFFW92HmAayuhQjyD7ETtRPVh2GpLOvvFEzZ0"
-    ],
+    tags: ["Enterprise AI", "Value Stream Intelligence", "DevOps Observability", "Design Systems"],
+    galleryImages: [tedVisual],
     architecture: {
-      componentsCount: 380,
-      tokensCount: 140,
-      figmaVariants: 1200,
+      componentsCount: 420,
+      tokensCount: 165,
+      figmaVariants: 1350,
       frameworks: ["React", "TypeScript", "Tailwind CSS", "Recharts"]
     }
   },
   {
-    id: "wealth-portal",
-    title: "Investment & Wealth Portal",
-    subtitle: "Premium Wealth Management Dashboard",
-    category: "FinTech",
-    team: "Wealth UX",
-    bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDOhkfCwtrRf8HPfeMkS2tWefo1eoOJGQiqUQJmFDCmrHRw_MhVh6bodQMxPAh7UrCMkffgX83jcTeAnr-NdrjdmQSH_fwjmrSdEANmzreRUVQ5zMFbwWrpM3Ze8QnTfoK2k9P2vHVHVONCbR8ZPqD4b9043ZZyuDiPwwoFUqNe-U-oZWUBcH6VD_7_dj1GoQ2kwEkgXcjynSoaFila-LFXrc6rq5IYgaWVjTd-xQ88MLl9TFNOuFE",
-    icon: "account_balance_wallet",
+    id: "bank-of-baroda-ux-audit",
+    title: "Bank of Baroda — UX Audit",
+    subtitle: "Mobile Banking Experience Audit & Redesign",
+    category: "Banking UX",
+    indexNumber: "02 / 05",
+    team: "FinTech UX Audit",
+    bgImage: bobVisual,
     isLocked: false,
     metrics: [
-      { label: "AUM Monitored", value: "$14.8B" },
-      { label: "Daily Active Users", value: "420K" },
-      { label: "NPS Score", value: "+74" },
-      { label: "Session Duration", value: "+45%" }
+      { label: "Loan Processing Speed", value: "+30%" },
+      { label: "Drop-off Reduction", value: "-42%" },
+      { label: "Regulatory Compliance", value: "100%" },
+      { label: "Banker Adoption", value: "4.8 / 5.0" }
     ],
-    overview: "A unified wealth portal for high-net-worth individuals and wealth advisors, featuring real-time portfolio health metrics, tax-loss harvesting recommendations, and asset allocation breakdown.",
-    challenge: "High net-worth clients struggled to visualize cross-asset exposure (crypto, real estate, public equities, private equity) in a single coherent interface.",
-    solution: "Architected a modular Bento-grid portal with responsive chart modules, custom dark luxury theme, and instant one-click rebalancing workflows.",
+    overview: "Heuristic UX audit and end-to-end workflow transformation for retail and commercial loan origination, introducing AI-driven credit scoring and frictionless underwriting.",
+    challenge: "Legacy multi-step loan evaluation workflows suffered from excessive cognitive load, high application drop-offs at compliance gates, and prolonged manual credit review.",
+    solution: "Redesigned the loan evaluation lifecycle with progressive disclosure, real-time risk assessment indicators, AI document verification, and automated status telemetry.",
     impact: [
-      "Increased user engagement by 45% month-over-month.",
-      "Featured as Best Wealth Tech Design at Finovate 2024.",
-      "Streamlined advisory review prep time from 2 hours to 15 minutes."
+      "Achieved 30% faster loan processing cycles via AI credit evaluation models.",
+      "Eliminated 6 redundant manual verification screens, drastically cutting cognitive fatigue for branch officers.",
+      "Standardized digital banking workflows across retail lending and commercial SME divisions."
     ],
-    tags: ["Wealth Tech", "Dashboard", "Bento Grid", "Data Viz"],
-    galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDOhkfCwtrRf8HPfeMkS2tWefo1eoOJGQiqUQJmFDCmrHRw_MhVh6bodQMxPAh7UrCMkffgX83jcTeAnr-NdrjdmQSH_fwjmrSdEANmzreRUVQ5zMFbwWrpM3Ze8QnTfoK2k9P2vHVHVONCbR8ZPqD4b9043ZZyuDiPwwoFUqNe-U-oZWUBcH6VD_7_dj1GoQ2kwEkgXcjynSoaFila-LFXrc6rq5IYgaWVjTd-xQ88MLl9TFNOuFE"
-    ],
+    tags: ["Banking UX", "UX Audit", "Financial Workflows", "AI Credit Scoring", "FinTech"],
+    galleryImages: [bobVisual],
     architecture: {
-      componentsCount: 290,
-      tokensCount: 95,
-      figmaVariants: 850,
-      frameworks: ["React", "D3.js", "Tailwind CSS", "Motion"]
+      componentsCount: 310,
+      tokensCount: 120,
+      figmaVariants: 890,
+      frameworks: ["React", "TypeScript", "Tailwind CSS", "Motion"]
     }
   },
   {
-    id: "design-system",
-    title: "Multi-Brand Design System",
-    subtitle: "4,000+ Reusable Components",
-    category: "System",
-    team: "Design Ops",
-    bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuAyOlC1Cx1rvnSEKGHI0gwZffAoB5d27AZMpFLSMgSdvOtJ5pK2sh2ReERmrfGwjo6T-YBvR0uUW-sU8z7DMAy7jF4IQm1k2avBpfZQNNG0Uokc_gGIPTKm72aymBmhZOpNSjomWXVgAfYsUTkk8zDa2ocjC6mvLNp-4CLXWuIPMnT0SW58fc2Vhwk2ZK4M2ZrRixxzBI-LxxJcKdA2P6htDXFn63K7cSXfNVQ8nRKM5y4imhfkBOI",
-    icon: "category",
+    id: "axis-amc-wealth",
+    title: "Axis AMC",
+    subtitle: "Wealth Management & Investment Experience",
+    category: "Wealth Management",
+    indexNumber: "03 / 05",
+    team: "Wealth Tech",
+    bgImage: axisVisual,
     isLocked: false,
     metrics: [
-      { label: "Reusable Components", value: "4,000+" },
-      { label: "Teams Onboarded", value: "18 Product Teams" },
-      { label: "Dev Efficiency", value: "+52%" },
-      { label: "Accessibility Rate", value: "100% WCAG AAA" }
+      { label: "QAAUM Ecosystem", value: "₹3.6L+ Cr" },
+      { label: "Digital Inflow Growth", value: "+45%" },
+      { label: "Onboarding Speed", value: "3.2x Faster" },
+      { label: "Order Execution", value: "99.8%" }
     ],
-    overview: "Built a comprehensive token-first design system named Architect, enabling 18 product teams across 3 brand verticals to ship pixel-perfect, accessible UI components at scale.",
-    challenge: "Fragmented UI components across web, iOS, and Android resulted in brand inconsistency, accessibility compliance failures, and duplicated frontend engineering effort.",
-    solution: "Created single-source-of-truth Figma variable tokens synced automatically via Style Dictionary pipeline to React, Web Components, and React Native repositories.",
+    overview: "End-to-end digital wealth management journeys and institutional investment portal catering to the ₹3.6L+ Cr QAAUM ecosystem, including GIFT City and MSME investment avenues.",
+    challenge: "High-net-worth and institutional investors needed to monitor complex multi-asset allocations and offshore funds without navigating cluttered legacy financial tables.",
+    solution: "Created a high-density, data-dense portfolio workstation featuring interactive asset allocation curves, real-time NAV tracking, and streamlined GIFT City onboarding.",
     impact: [
-      "Accelerated feature design-to-production handoff velocity by 52%.",
-      "Achieved 100% WCAG 2.1 AAA color contrast and keyboard navigation compliance.",
-      "Saved an estimated $1.2M annually in engineering rework."
+      "Streamlined high-volume institutional investor journeys and GIFT City onboarding workflows.",
+      "Visualized deep multi-asset portfolio telemetry with responsive, real-time interactive charts.",
+      "Increased self-serve digital portfolio rebalancing among institutional investors."
     ],
-    tags: ["Design System", "Tokens", "Figma Variables", "Accessibility"],
-    galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAyOlC1Cx1rvnSEKGHI0gwZffAoB5d27AZMpFLSMgSdvOtJ5pK2sh2ReERmrfGwjo6T-YBvR0uUW-sU8z7DMAy7jF4IQm1k2avBpfZQNNG0Uokc_gGIPTKm72aymBmhZOpNSjomWXVgAfYsUTkk8zDa2ocjC6mvLNp-4CLXWuIPMnT0SW58fc2Vhwk2ZK4M2ZrRixxzBI-LxxJcKdA2P6htDXFn63K7cSXfNVQ8nRKM5y4imhfkBOI"
-    ],
+    tags: ["Wealth Management", "Asset Allocation", "Financial Dashboards", "Data Visualization", "FinTech"],
+    galleryImages: [axisVisual],
     architecture: {
-      componentsCount: 4200,
-      tokensCount: 520,
-      figmaVariants: 14000,
-      frameworks: ["Figma Tokens", "Style Dictionary", "React", "Tailwind CSS"]
+      componentsCount: 280,
+      tokensCount: 98,
+      figmaVariants: 780,
+      frameworks: ["React", "D3.js", "Tailwind CSS", "Recharts"]
     }
   },
   {
-    id: "mobile-banking",
-    title: "Mobile Banking Redesign",
-    subtitle: "Increasing Precision in UX flows",
-    category: "Feature",
-    team: "Microsoft AI / Banking",
-    bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBs6JqU7zEsNM0g3iGR9iM37zzpwHvmrDtfucXvdtEadz5j801Co8ZarYSaYamOV4A3dl2PZ97lDSVyZwxvPAR33Pod1sZGdq7owIr9HBYi8L0FKE1A1a6mZ9--0mTjKm6n9L8PyJwThLQHxo4vf6GtVTYwLOrnB-if9mDjCKypCbP9CRGZ9YxhZY_IGDYIrpdqu9KfiLThX8JuP9qda6k1KFbolUGpg2NIzUHuZLWqlikzJBLiGww",
-    logoUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuD_p6isciRFlpsYDUfeaHm7O6iUEd-fukuuz6WDAHzeveMnZk9wGXI2GgT76x2D4PhtL6GkkDIXHtTKI_sg_yKWqRFqoMq_LUZTL-tcATfxcPR1AMWVYDqbovi-lr9hxOx-heasUF79sVqvEPVwwx_GCts6XpPeNcBXVPg1Fb3lwDqymJgNxyXQtIO_rLVtpG7OkRgyzJL6NrOsfcoL56LR9tcugocuApOKNQPYA1k6lXnu_jyyyRg",
+    id: "finovation-platform",
+    title: "Finovation Platform",
+    subtitle: "Lending & Business Management Platform",
+    category: "Enterprise Platform",
+    indexNumber: "04 / 05",
+    team: "Enterprise FinTech",
+    bgImage: finovationVisual,
     isLocked: false,
     metrics: [
-      { label: "App Store Rating", value: "4.9 / 5.0" },
-      { label: "Transfer Friction", value: "-34%" },
-      { label: "Monthly Transfers", value: "2.4M" },
-      { label: "Biometric Auth", value: "99.1%" }
+      { label: "Disbursements Handled", value: "$28B+" },
+      { label: "Underwriting Latency", value: "-54%" },
+      { label: "Audit Accuracy", value: "100%" },
+      { label: "Enterprise Teams", value: "18 Teams" }
     ],
-    overview: "Complete UX overhaul for a top-tier retail mobile banking application serving millions of daily active users, introducing quick-pay cards, smart category tagging, and Face ID instant execution.",
-    challenge: "Complex multi-step payment transfer flows resulted in high drop-offs and customer support calls regarding accidental misdirected funds.",
-    solution: "Designed a streamlined single-screen payment card interface with real-time beneficiary verification, tactile gesture triggers, and haptic feedback loops.",
+    overview: "Enterprise-grade financial operations and lending workstation designed to support multi-million dollar disbursements with automated risk underwriting and audit trails.",
+    challenge: "Underwriters and operations managers navigated disjointed tools, leading to operational friction, manual data entry errors, and slow disbursement turnarounds.",
+    solution: "Architected a unified enterprise workstation featuring visual workflow builders, multi-tier approval matrixes, automated rule engines, and instant compliance logging.",
     impact: [
-      "Reduced transaction friction by 34% with zero reported misdirected payments.",
-      "Increased App Store user rating from 3.8 to 4.9 stars.",
-      "Processed 2.4 million seamless mobile transfers within the first quarter."
+      "Cut institutional underwriting cycle times by more than half through intelligent automation.",
+      "Delivered a component-driven enterprise design system adopted across multiple financial product suites.",
+      "Enabled seamless auditability and role-based access control for compliance teams."
     ],
-    tags: ["Mobile UX", "iOS / Android", "FinTech", "Micro-interactions"],
-    galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBs6JqU7zEsNM0g3iGR9iM37zzpwHvmrDtfucXvdtEadz5j801Co8ZarYSaYamOV4A3dl2PZ97lDSVyZwxvPAR33Pod1sZGdq7owIr9HBYi8L0FKE1A1a6mZ9--0mTjKm6n9L8PyJwThLQHxo4vf6GtVTYwLOrnB-if9mDjCKypCbP9CRGZ9YxhZY_IGDYIrpdqu9KfiLThX8JuP9qda6k1KFbolUGpg2NIzUHuZLWqlikzJBLiGww"
-    ],
+    tags: ["Enterprise Platform", "Lending Workflows", "Design Systems", "FinTech Architecture"],
+    galleryImages: [finovationVisual],
     architecture: {
-      componentsCount: 190,
-      tokensCount: 75,
-      figmaVariants: 620,
-      frameworks: ["React Native", "Figma", "Motion"]
+      componentsCount: 390,
+      tokensCount: 145,
+      figmaVariants: 1100,
+      frameworks: ["React", "TypeScript", "Tailwind CSS", "Motion"]
     }
   },
   {
-    id: "ecommerce-checkout",
-    title: "E-commerce Checkout Flow",
-    subtitle: "Optimizing conversion for global retail",
-    category: "Conversion",
-    team: "Commerce UX",
-    bgImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC2m-CnPtExm6XD7OpRaq_fSA76XhQHzMNaAwIFsjIUcQL7jgRT_xj5WldMlZBAy1PIWcOiK7nm1TFdkttz3qjnpdBhGbVkAlBPHexr4MaIzEX5w8fQGi_FDhmY-f7yj7RieD7Nhexjn_gniVbsFeYz0YUL_TGIZTW4yx6qBzF7VGq8Z70GBO8R5ZwUkZLzcPJc_hCTrrMQp8gXu96JmVLLgIMOCFzcZDZZXBh0bXdN31rOuP4D0Ig",
-    icon: "shopping_cart",
+    id: "crime-analytics-platform",
+    title: "Crime Analytics Platform",
+    subtitle: "Data-Driven Crime Insights & Analytics Platform",
+    category: "Big Data & Analytics",
+    indexNumber: "05 / 05",
+    team: "Intelligence UX",
+    bgImage: crimeVisual,
     isLocked: false,
     metrics: [
-      { label: "Checkout Conversion", value: "+28.4%" },
-      { label: "Cart Abandonment", value: "-19%" },
-      { label: "Average Order Value", value: "+$42" },
-      { label: "Global Currencies", value: "32 Supported" }
+      { label: "Records Ingested", value: "1B+" },
+      { label: "Law Enforcement Agencies", value: "2,100+" },
+      { label: "Geospatial Query", value: "<800ms" },
+      { label: "Commercial Deals", value: "~$2.5M" }
     ],
-    overview: "High-converting single-page checkout flow for a global luxury streetwear retailer, unifying multi-currency payments, Express Apple/Google Pay, and inline customs tax calculation.",
-    challenge: "High cart abandonment at checkout due to confusing multi-page steps, unexpected shipping fee reveals, and lack of localized payment gateways.",
-    solution: "Engineered a transparent single-page accordion checkout interface with live order summary recalculation, instant address auto-complete, and one-tap guest checkout.",
+    overview: "Enterprise geospatial crime analytics and intelligence console ingesting 1B+ records across 2,100+ law enforcement agencies, enabling rapid incident correlation and predictive hotspot mapping.",
+    challenge: "Intelligence analysts and investigators struggled with fragmented cross-jurisdictional datasets with no unified way to correlate incidents in real time.",
+    solution: "Architected a high-density, dark-mode geospatial intelligence console with multi-layer map filtering, automated link-analysis graphs, incident timeline reconstruction, and sub-second query response.",
     impact: [
-      "Boosted checkout completion rate by +28.4% globally.",
-      "Decreased cart abandonment rate by 19% across EU and APAC regions.",
-      "Lifted overall Average Order Value (AOV) by $42 per transaction."
+      "Enabled multi-agency coordination with sub-second querying across billion-scale incident datasets.",
+      "Drove ~$2.5M in enterprise commercial contracts through superior UX and mission-critical visualization clarity.",
+      "Reduced incident pattern recognition time from hours to minutes for field analysts."
     ],
-    tags: ["E-Commerce", "Conversion Rate Optimization", "Checkout", "Global Payments"],
-    galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC2m-CnPtExm6XD7OpRaq_fSA76XhQHzMNaAwIFsjIUcQL7jgRT_xj5WldMlZBAy1PIWcOiK7nm1TFdkttz3qjnpdBhGbVkAlBPHexr4MaIzEX5w8fQGi_FDhmY-f7yj7RieD7Nhexjn_gniVbsFeYz0YUL_TGIZTW4yx6qBzF7VGq8Z70GBO8R5ZwUkZLzcPJc_hCTrrMQp8gXu96JmVLLgIMOCFzcZDZZXBh0bXdN31rOuP4D0Ig"
-    ],
+    tags: ["Big Data Analytics", "Geospatial Intelligence", "Information Architecture", "Data Visualization", "Enterprise UX"],
+    galleryImages: [crimeVisual],
     architecture: {
-      componentsCount: 140,
-      tokensCount: 60,
-      figmaVariants: 480,
-      frameworks: ["React", "Shopify Hydrogen", "Tailwind CSS"]
+      componentsCount: 450,
+      tokensCount: 180,
+      figmaVariants: 1520,
+      frameworks: ["React", "D3.js", "Mapbox GL", "Tailwind CSS"]
     }
   }
 ];
@@ -261,6 +380,60 @@ export const MUSIC_TRACKS: MusicTrack[] = [
     key: "C#m",
     audioSampleUrl: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a705b6.mp3?filename=lofi-chill-140858.mp3",
     coverArt: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80"
+  }
+];
+
+export const MUSIC_PLATFORM_PLAYLISTS: MusicPlatformPlaylist[] = [
+  {
+    id: "spotify-playlist",
+    platform: "Spotify",
+    title: "Deep Flow & Late Night Synths",
+    curatorNote: "Curated collection of mellow analog synths, low-tempo beats, and deep focus rhythms crafted for uninterrupted Figma and coding deep work.",
+    url: "https://open.spotify.com/playlist/37i9dQZF1DXdLEN7aqioXM",
+    trackCount: "48 Tracks · 2h 45m",
+    genreTag: "Lo-Fi / Synthwave",
+    featuredTracks: [
+      "Midnight Figma Loops",
+      "Architectural Oscillations",
+      "Design Tokens & Analog Synths",
+      "Sub-bass Heuristics"
+    ],
+    themeColor: "#1DB954",
+    badge: "Curated Playlist"
+  },
+  {
+    id: "ytmusic-playlist",
+    platform: "YouTube Music",
+    title: "Ambient Modular Sessions",
+    curatorNote: "Long-play ambient recordings, generative Eurorack modular patches, and immersive hardware groovebox soundscapes.",
+    url: "https://music.youtube.com/playlist?list=RDCLAK5uy_kfdijBaq83DDGT4UpS-G0fA-L1fQf5f9M",
+    trackCount: "32 Sessions · 3h 10m",
+    genreTag: "Ambient Modular",
+    featuredTracks: [
+      "Eurorack Generative Patch #04",
+      "Analog Filter Sweeps (Live)",
+      "Late Night Sine Waves",
+      "Resonant Decay Study"
+    ],
+    themeColor: "#FF0000",
+    badge: "Live Sessions & Stems"
+  },
+  {
+    id: "soundcloud-playlist",
+    platform: "SoundCloud",
+    title: "Unreleased Patches & Live Jams",
+    curatorNote: "Raw works in progress, live hardware jam recordings, prototype synthesizer soundscapes, and lossy experimental sound design clips.",
+    url: "https://soundcloud.com/discover/sets/weekly",
+    trackCount: "24 Original Mixes",
+    genreTag: "Chillhop / Modular",
+    featuredTracks: [
+      "Prophet Rev2 Jam - Take 3",
+      "Lofi Tape Saturation Loop",
+      "Moog Subharmonicon Sketch",
+      "Spring Reverb Reflections"
+    ],
+    themeColor: "#FF5500",
+    badge: "WIPs & Unreleased"
   }
 ];
 
