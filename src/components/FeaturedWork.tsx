@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CASE_STUDIES } from '../data/portfolioData';
 import { CaseStudy } from '../types';
 import { 
@@ -13,7 +13,118 @@ interface FeaturedWorkProps {
   onSelectCaseStudy: (caseStudy: CaseStudy) => void;
 }
 
+interface ProjectTheme {
+  bgBase: string;
+  ambientPrimary: string;
+  ambientSecondary: string;
+  accentColor: string;
+  tagline: string;
+  accentBadgeBg: string;
+  badgeTextColor: string;
+}
+
+const PROJECT_THEMES: Record<string, ProjectTheme> = {
+  'ted-ai-platform': {
+    // Rich Deep Forest Emerald (Vivid & atmospheric, matching Finovation intensity)
+    bgBase: '#051c14',
+    ambientPrimary: 'rgba(16, 185, 129, 0.48)',
+    ambientSecondary: 'rgba(52, 211, 153, 0.25)',
+    accentColor: '#34d399',
+    tagline: 'Value Stream AI',
+    accentBadgeBg: 'rgba(16, 185, 129, 0.20)',
+    badgeTextColor: '#6ee7b7'
+  },
+  'bank-of-baroda-ux-audit': {
+    // Luminous Sunset Amber & Terracotta (Rich warmth and depth matching Finovation)
+    bgBase: '#220e05',
+    ambientPrimary: 'rgba(249, 115, 22, 0.52)',
+    ambientSecondary: 'rgba(251, 146, 60, 0.26)',
+    accentColor: '#fb923c',
+    tagline: 'Banking Experience Audit',
+    accentBadgeBg: 'rgba(249, 115, 22, 0.20)',
+    badgeTextColor: '#fdba74'
+  },
+  'axis-amc-wealth': {
+    // Luminous Royal Wine & Ruby Rose (Deep vibrant radiance matching Finovation)
+    bgBase: '#1f0616',
+    ambientPrimary: 'rgba(244, 63, 94, 0.52)',
+    ambientSecondary: 'rgba(251, 113, 133, 0.26)',
+    accentColor: '#fb7185',
+    tagline: 'Wealth Management Tech',
+    accentBadgeBg: 'rgba(244, 63, 94, 0.20)',
+    badgeTextColor: '#fda4af'
+  },
+  'finovation-platform': {
+    // Royal Sapphire & Cobalt Reference Benchmark
+    bgBase: '#051329',
+    ambientPrimary: 'rgba(59, 130, 246, 0.48)',
+    ambientSecondary: 'rgba(96, 165, 250, 0.24)',
+    accentColor: '#60a5fa',
+    tagline: 'Lending Operations',
+    accentBadgeBg: 'rgba(59, 130, 246, 0.20)',
+    badgeTextColor: '#93c5fd'
+  },
+  'crime-analytics-platform': {
+    // Luminous Topaz Gold & Warm Amber Reference Benchmark
+    bgBase: '#1a1504',
+    ambientPrimary: 'rgba(245, 180, 20, 0.50)',
+    ambientSecondary: 'rgba(251, 191, 36, 0.25)',
+    accentColor: '#facc15',
+    tagline: 'Intelligence Analytics',
+    accentBadgeBg: 'rgba(234, 179, 8, 0.20)',
+    badgeTextColor: '#fde047'
+  }
+};
+
+const DEFAULT_THEME: ProjectTheme = {
+  bgBase: '#0D0D0E',
+  ambientPrimary: 'rgba(255, 255, 255, 0.18)',
+  ambientSecondary: 'rgba(255, 255, 255, 0.08)',
+  accentColor: '#34d399',
+  tagline: 'Featured Work',
+  accentBadgeBg: 'rgba(255, 255, 255, 0.1)',
+  badgeTextColor: '#ffffff'
+};
+
 export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectCaseStudy }) => {
+  const [activeProjectId, setActiveProjectId] = useState<string>(CASE_STUDIES[0]?.id || 'ted-ai-platform');
+  const projectRefs = useRef<Map<string, HTMLElement>>(new Map());
+
+  // Set up intersection observer & scroll tracking to smoothly transition background
+  useEffect(() => {
+    const handleScroll = () => {
+      // Find the card closest to viewport center
+      const viewportCenter = window.innerHeight / 2;
+      let closestId = activeProjectId;
+      let minDistance = Infinity;
+
+      projectRefs.current.forEach((el, id) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(cardCenter - viewportCenter);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestId = id;
+        }
+      });
+
+      if (closestId && closestId !== activeProjectId) {
+        setActiveProjectId(closestId);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [activeProjectId]);
+
+  const activeTheme = PROJECT_THEMES[activeProjectId] || DEFAULT_THEME;
+
   const getProjectMetadata = (project: CaseStudy) => {
     switch (project.id) {
       case 'ted-ai-platform':
@@ -64,32 +175,80 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectCaseStudy })
   return (
     <section 
       id="featured-work" 
-      aria-labelledby="select-work-heading" 
-      className="w-full flex flex-col items-center bg-[#0D0D0E] py-16 sm:py-20 lg:py-24"
+      aria-labelledby="selected-work-heading" 
+      className="w-full relative flex flex-col items-center py-16 sm:py-20 lg:py-28 transition-colors duration-700 ease-out overflow-hidden"
+      style={{ 
+        backgroundColor: activeTheme.bgBase
+      }}
     >
-      <div className="w-full max-w-4xl px-5 sm:px-8 md:px-12 flex flex-col">
+      {/* Unified Architect Grid Overlay */}
+      <div className="absolute inset-0 z-0 pointer-events-none grid-bg opacity-70" aria-hidden="true" />
+
+      {/* Structural Vertical Grid Guidelines (Architect Enterprise style matching all views) */}
+      <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block" aria-hidden="true">
+        <div className="absolute top-0 bottom-0 left-[25%] w-[1px] bg-[#27272A]/40" />
+        <div className="absolute top-0 bottom-0 left-[50%] w-[1px] bg-[#27272A]/40" />
+        <div className="absolute top-0 bottom-0 left-[75%] w-[1px] bg-[#27272A]/40" />
+      </div>
+
+      {/* Section blend masks for seamless transition */}
+      <div 
+        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-[#0D0D0E] to-transparent pointer-events-none opacity-90" />
+        <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#0D0D0E] to-transparent pointer-events-none opacity-90" />
+      </div>
+
+      <div className="w-full max-w-4xl px-5 sm:px-8 md:px-12 flex flex-col relative z-10">
         {/* Section Heading: "Selected Work" */}
-        <h2 
-          id="selected-work-heading" 
-          className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight mb-10 sm:mb-14"
-        >
-          Selected Work
-        </h2>
+        <div className="flex items-center justify-between mb-12 sm:mb-16 border-b border-white/10 pb-5">
+          <div className="space-y-1">
+            <h2 
+              id="selected-work-heading" 
+              className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight"
+            >
+              Selected Work
+            </h2>
+            <p className="text-xs sm:text-sm text-zinc-300">
+              Deep dive into case studies across enterprise AI, FinTech, and systems.
+            </p>
+          </div>
+        </div>
 
         {/* Project List */}
         <div className="w-full flex flex-col space-y-16 sm:space-y-24 md:space-y-28">
           {CASE_STUDIES.map((project, index) => {
             const { company, readTime, LogoComponent, headline } = getProjectMetadata(project);
+            const isCurrentActive = project.id === activeProjectId;
+            const projectTheme = PROJECT_THEMES[project.id] || DEFAULT_THEME;
 
             return (
               <article
                 key={project.id}
+                ref={(el) => {
+                  if (el) projectRefs.current.set(project.id, el);
+                  else projectRefs.current.delete(project.id);
+                }}
+                data-project-id={project.id}
                 id={`project-card-${project.id}`}
                 aria-labelledby={`project-headline-${project.id}`}
-                className="w-full flex flex-col group scroll-mt-24 md:min-h-[480px] md:h-[calc(100vh-150px)] md:max-h-[700px] justify-between"
+                className="w-full flex flex-col group scroll-mt-24 md:min-h-[480px] md:h-[calc(100vh-150px)] md:max-h-[700px] justify-between transition-all duration-500 relative"
               >
+                {/* Dedicated Overhead Card Lighting Source (Identical top-center 50% origin for each card, matching Finovation) */}
+                <div 
+                  className="absolute -top-12 left-1/2 -translate-x-1/2 w-[92%] sm:w-[88%] h-[300px] rounded-full blur-[95px] pointer-events-none transition-opacity duration-700 -z-10"
+                  style={{
+                    backgroundImage: `radial-gradient(ellipse at 50% 20%, ${projectTheme.ambientPrimary} 0%, ${projectTheme.ambientSecondary} 45%, transparent 75%)`,
+                    opacity: isCurrentActive ? 0.95 : 0.45
+                  }}
+                  aria-hidden="true"
+                />
+
                 {/* 1. Large Rounded Visual Container - flexible height to fit single viewport */}
-                <div className="w-full aspect-[16/10] md:aspect-auto md:flex-1 md:min-h-0 rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#161618] border border-[#232326] shadow-xl relative transition-all duration-300 group-hover:border-zinc-700 group-hover:shadow-2xl">
+                <div 
+                  className="w-full aspect-[16/10] md:aspect-auto md:flex-1 md:min-h-0 rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#161618] border border-white/10 shadow-2xl relative transition-all duration-500"
+                >
                   <img
                     src={project.bgImage}
                     alt={`${project.title} project preview visual`}
@@ -116,7 +275,10 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectCaseStudy })
                     {/* Row 2: Large Bold Headline */}
                     <h3 
                       id={`project-headline-${project.id}`}
-                      className="font-display text-lg sm:text-xl md:text-2xl lg:text-[26px] font-bold text-white tracking-tight leading-snug mt-1.5 sm:mt-2 group-hover:text-emerald-400 transition-colors"
+                      className="font-display text-lg sm:text-xl md:text-2xl lg:text-[26px] font-bold text-white tracking-tight leading-snug mt-1.5 sm:mt-2 transition-colors duration-300"
+                      style={{
+                        color: isCurrentActive ? '#ffffff' : undefined
+                      }}
                     >
                       {headline}
                     </h3>
@@ -129,7 +291,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectCaseStudy })
                       onClick={() => onSelectCaseStudy(project)}
                       aria-haspopup="dialog"
                       aria-label={`Read case study for ${project.title}`}
-                      className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-black text-xs sm:text-[13px] font-semibold tracking-wide uppercase font-label-caps cursor-pointer transition-all duration-200 hover:bg-zinc-200 hover:scale-[1.03] active:scale-95 shadow-md"
+                      className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-black text-xs sm:text-[13px] font-semibold tracking-wide uppercase font-label-caps cursor-pointer transition-all duration-200 hover:scale-[1.04] active:scale-95 shadow-md"
                     >
                       <span>Read Case Study</span>
                       <span className="text-sm transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">→</span>

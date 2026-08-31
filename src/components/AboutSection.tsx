@@ -8,8 +8,11 @@ import {
 export const AboutSection: React.FC = () => {
   return (
     <div className="relative w-full max-w-[1280px] mx-auto px-4 sm:px-6 md:px-12 py-8 space-y-20 text-[#e5e2e1] animate-fadeIn">
+      {/* Unified Architect Dot / Line Grid Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none grid-bg opacity-70" aria-hidden="true" />
+
       {/* Structural Vertical Grid Guidelines (Architect Enterprise style) */}
-      <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block">
+      <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block" aria-hidden="true">
         <div className="absolute top-0 bottom-0 left-[25%] w-[1px] bg-[#27272A]/40" />
         <div className="absolute top-0 bottom-0 left-[50%] w-[1px] bg-[#27272A]/40" />
         <div className="absolute top-0 bottom-0 left-[75%] w-[1px] bg-[#27272A]/40" />
@@ -21,11 +24,12 @@ export const AboutSection: React.FC = () => {
       <section 
         id="hero"
         aria-label="Introduction"
-        className="relative min-h-[580px] flex items-center overflow-hidden border-t border-[#27272A] pt-12"
+        className="relative min-h-[580px] flex items-center border-t border-[#27272A] pt-12 pb-6"
       >
         {/* Section Pill Label */}
-        <div className="absolute -top-3 left-4 sm:left-6 font-label-caps text-[11px] tracking-widest text-[#c5c6ca] bg-[#0D0D0E] px-2.5 py-0.5 border border-[#27272A] rounded z-20 uppercase">
-          01 / INTRODUCTION
+        <div className="absolute -top-3 left-4 sm:left-6 font-label-caps text-[11px] tracking-widest text-emerald-400 bg-[#0D0D0E] px-3 py-0.5 border border-emerald-500/40 rounded-full z-30 uppercase shadow-sm flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          <span>01 / INTRODUCTION</span>
         </div>
 
         {/* Ambient Backlight Glow */}
@@ -34,7 +38,7 @@ export const AboutSection: React.FC = () => {
         </div>
 
         {/* Masked Portrait with Gradient Blending */}
-        <div className="absolute inset-0 z-10 pointer-events-none flex justify-end items-end md:items-start opacity-70 sm:opacity-90">
+        <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden flex justify-end items-end md:items-start opacity-70 sm:opacity-90">
           <div className="relative w-full max-w-[560px] h-full flex justify-end">
             <img 
               src={PROFILE_IMAGE} 
@@ -49,12 +53,19 @@ export const AboutSection: React.FC = () => {
         </div>
 
         {/* Gradient overlays to guarantee crisp text legibility */}
-        <div className="absolute inset-0 z-15 pointer-events-none bg-gradient-to-r from-[#0D0D0E] via-[#0D0D0E]/80 to-transparent sm:w-3/4" />
+        <div className="absolute inset-0 z-15 pointer-events-none bg-gradient-to-r from-[#0D0D0E] via-[#0D0D0E]/85 to-transparent sm:w-3/4" />
         <div className="absolute inset-0 z-15 pointer-events-none bg-gradient-to-t from-[#0D0D0E] via-transparent to-transparent sm:hidden" />
 
         {/* Content Container */}
         <div className="relative z-20 w-full py-8 sm:py-12">
           <div className="max-w-2xl space-y-6">
+            {/* Distinct Introduction Tag */}
+            <div className="flex items-center gap-2">
+              <span className="font-label-caps text-xs font-semibold text-emerald-400 uppercase tracking-widest">
+                Senior Product & UX Designer
+              </span>
+            </div>
+
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-[-0.04em]">
               Designing Systems.<br />
               <span className="text-[#e4e2e3]">Delivering Clarity.</span>

@@ -27,9 +27,19 @@ export const DesignSystemExplorer: React.FC = () => {
   };
 
   return (
-    <div className="max-w-[1280px] mx-auto px-6 py-12 space-y-12 animate-fadeIn">
+    <div className="relative w-full max-w-[1280px] mx-auto px-6 py-12 space-y-12 animate-fadeIn">
+      {/* Unified Architect Dot / Line Grid Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none grid-bg opacity-70" aria-hidden="true" />
+
+      {/* Structural Vertical Grid Guidelines (Architect Enterprise style) */}
+      <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block" aria-hidden="true">
+        <div className="absolute top-0 bottom-0 left-[25%] w-[1px] bg-[#27272A]/40" />
+        <div className="absolute top-0 bottom-0 left-[50%] w-[1px] bg-[#27272A]/40" />
+        <div className="absolute top-0 bottom-0 left-[75%] w-[1px] bg-[#27272A]/40" />
+      </div>
+
       {/* Title Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-[#27272A] pb-8">
+      <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-[#27272A] pb-8">
         <div>
           <div className="flex items-center gap-2 mb-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>

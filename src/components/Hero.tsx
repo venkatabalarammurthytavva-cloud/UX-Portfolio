@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HERO_BACKGROUND } from '../data/portfolioData';
+import { StarrySky } from './StarrySky';
 
 export const Hero: React.FC = () => {
   const titles = ["Product Designer", "UI/UX Designer", "B2B SaaS Architect", "FinTech Specialist"];
@@ -19,21 +19,27 @@ export const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[720px] md:min-h-[820px] flex items-center justify-center overflow-hidden border-b border-[#27272A] grid-bg">
-      {/* Background Photograph */}
-      <div className="absolute inset-0 z-0 opacity-60 pointer-events-none" aria-hidden="true">
-        <img 
-          src={HERO_BACKGROUND} 
-          alt="" 
-          role="presentation"
-          className="w-full h-full object-cover filter contrast-110 saturate-125 brightness-95"
-        />
+    <section className="relative min-h-[720px] md:min-h-[820px] flex items-center justify-center overflow-hidden border-b border-[#27272A] bg-[#0D0D0E]">
+      {/* Sky Full of Stars Background */}
+      <StarrySky />
+
+      {/* Architect Dot / Line Grid Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none grid-bg opacity-80" aria-hidden="true" />
+
+      {/* Structural Vertical Grid Guidelines (Architect Enterprise style matching About page) */}
+      <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block" aria-hidden="true">
+        <div className="absolute top-0 bottom-0 left-[25%] w-[1px] bg-[#27272A]/40" />
+        <div className="absolute top-0 bottom-0 left-[50%] w-[1px] bg-[#27272A]/40" />
+        <div className="absolute top-0 bottom-0 left-[75%] w-[1px] bg-[#27272A]/40" />
       </div>
 
-      {/* Gradient Masking */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D0E]/25 via-[#0D0D0E]/55 to-[#0D0D0E] z-0 pointer-events-none" aria-hidden="true"></div>
-      {/* Soft Center Vignette for Readability */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(13,13,14,0.45)_0%,rgba(13,13,14,0.85)_100%)] z-0 pointer-events-none" aria-hidden="true"></div>
+      {/* Ambient Radial Lighting Glow */}
+      <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center" aria-hidden="true">
+        <div className="w-[600px] sm:w-[850px] h-[450px] sm:h-[600px] bg-emerald-500/10 rounded-full blur-[140px] opacity-60" />
+      </div>
+
+      {/* Soft Vignette Masking */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0D0D0E_85%)] z-0 pointer-events-none" aria-hidden="true" />
 
       {/* Floating Animated Metric Cards */}
       <div className="absolute inset-0 z-10 pointer-events-none hidden lg:block overflow-hidden max-w-[1400px] mx-auto" aria-hidden="true">

@@ -35,12 +35,19 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* Architect Grid Background */
+/* Architect Grid Background - Unified across all pages */
 .grid-bg {
   background-image: 
-    linear-gradient(to right, #1c1b1b 1px, transparent 1px),
-    linear-gradient(to bottom, #1c1b1b 1px, transparent 1px);
-  background-size: 24px 24px;
+    linear-gradient(to right, rgba(39, 39, 42, 0.45) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(39, 39, 42, 0.45) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.grid-bg-subtle {
+  background-image: 
+    linear-gradient(to right, rgba(39, 39, 42, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(39, 39, 42, 0.25) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 /* Bento Card Styling */
@@ -94,6 +101,85 @@
 
 .animate-float-slow {
   animation: float 10s ease-in-out infinite 4s;
+}
+
+/* Starry Sky Animations */
+@keyframes twinkle {
+  0% {
+    opacity: 0.15;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes sparkleCross {
+  0%, 100% {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(0.6) rotate(0deg);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1.2) rotate(45deg);
+  }
+}
+
+@keyframes meteor {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(-45deg) scaleX(0);
+  }
+  10% {
+    opacity: 1;
+    transform: translate3d(-40px, 40px, 0) rotate(-45deg) scaleX(1);
+  }
+  30% {
+    opacity: 0;
+    transform: translate3d(-180px, 180px, 0) rotate(-45deg) scaleX(1.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-180px, 180px, 0) rotate(-45deg) scaleX(0);
+  }
+}
+
+.shooting-star {
+  position: absolute;
+  height: 1.5px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(52, 211, 153, 0.4), transparent);
+  border-radius: 999px;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+  pointer-events: none;
+}
+
+.shooting-star-1 {
+  top: 15%;
+  right: 15%;
+  width: 120px;
+  animation: meteor 9s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  animation-delay: 1.5s;
+}
+
+.shooting-star-2 {
+  top: 35%;
+  right: 40%;
+  width: 90px;
+  animation: meteor 12s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  animation-delay: 6s;
+}
+
+.shooting-star-3 {
+  top: 10%;
+  left: 30%;
+  width: 140px;
+  animation: meteor 15s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  animation-delay: 10s;
 }
 
 /* Custom Scrollbar */
