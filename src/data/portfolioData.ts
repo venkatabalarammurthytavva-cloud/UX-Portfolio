@@ -344,7 +344,7 @@ export const DESIGN_TOKENS: DesignToken[] = [
   { name: "surface-border", category: "color", value: "#27272A", description: "High-precision grid hairline border" },
   { name: "accent-emerald", category: "color", value: "#10B981", description: "Success status & system health indicator" },
   { name: "primary-text", category: "color", value: "#E5E2E1", description: "Off-white primary content typography" },
-  { name: "font-display", category: "typography", value: "Inter (700 Bold)", description: "High-impact display title scale" },
+  { name: "font-display", category: "typography", value: "Manrope (700 Bold)", description: "High-impact display title scale" },
   { name: "font-label-caps", category: "typography", value: "JetBrains Mono (500)", description: "Technical caps & metadata label scale" },
   { name: "radius-card", category: "radius", value: "0.75rem (12px)", description: "Bento box outer container radius" },
   { name: "grid-spacing", category: "spacing", value: "24px", description: "Base structural layout gutter" }

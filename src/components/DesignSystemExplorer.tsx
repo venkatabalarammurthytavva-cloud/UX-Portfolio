@@ -142,7 +142,7 @@ export const DesignSystemExplorer: React.FC = () => {
         <div className="space-y-6 font-display">
           <div>
             <span className="font-label-caps text-[10px] text-zinc-400 uppercase block mb-1">
-              Display Title (Inter 64px / Bold)
+              Display Title (Manrope 64px / Bold)
             </span>
             <div className="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
               {customSampleText}
@@ -151,7 +151,7 @@ export const DesignSystemExplorer: React.FC = () => {
 
           <div>
             <span className="font-label-caps text-[10px] text-zinc-400 uppercase block mb-1">
-              Headline Large (Inter 32px / SemiBold)
+              Headline Large (Manrope 32px / SemiBold)
             </span>
             <div className="text-xl sm:text-2xl font-semibold text-white tracking-tight">
               {customSampleText}
