@@ -19,7 +19,7 @@ export const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[720px] md:min-h-[820px] flex items-center justify-center overflow-hidden border-b border-[#27272A] bg-[#0D0D0E]">
+    <section className="relative py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-hidden border-b border-[#27272A] bg-[#0D0D0E]">
       {/* Sky Full of Stars Background */}
       <StarrySky />
 
@@ -44,32 +44,32 @@ export const Hero: React.FC = () => {
       {/* Floating Animated Metric Cards */}
       <div className="absolute inset-0 z-10 pointer-events-none hidden lg:block overflow-hidden max-w-[1400px] mx-auto" aria-hidden="true">
         {/* Stat 1: 5+ Years */}
-        <div className="absolute top-[12%] left-[6%] rotate-[-3deg] animate-float bg-[#0D0D0E]/80 backdrop-blur-xl border border-white/15 p-5 rounded-xl flex flex-col items-center pointer-events-auto hover:border-white/30 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.5)]">
-          <span className="font-display text-4xl font-bold text-[#ff4d2d] mb-1">5+</span>
+        <div className="absolute top-[8%] left-[5%] rotate-[-3deg] animate-float bg-[#0D0D0E]/80 backdrop-blur-xl border border-white/15 p-4 rounded-xl flex flex-col items-center pointer-events-auto hover:border-white/30 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.5)]">
+          <span className="font-display text-3xl font-bold text-[#ff4d2d] mb-1">5+</span>
           <span className="font-label-caps text-[10px] uppercase tracking-widest text-[#e2e3e7]">Years of Experience</span>
         </div>
 
         {/* Stat 2: 10+ Projects */}
-        <div className="absolute top-[68%] left-[6%] rotate-[4deg] animate-float-delayed bg-[#0D0D0E]/80 backdrop-blur-xl border border-white/15 p-5 rounded-xl flex flex-col items-center pointer-events-auto hover:border-white/30 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.5)]">
-          <span className="font-display text-4xl font-bold text-[#2d5bff] mb-1">10+</span>
+        <div className="absolute bottom-[8%] left-[5%] rotate-[4deg] animate-float-delayed bg-[#0D0D0E]/80 backdrop-blur-xl border border-white/15 p-4 rounded-xl flex flex-col items-center pointer-events-auto hover:border-white/30 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.5)]">
+          <span className="font-display text-3xl font-bold text-[#2d5bff] mb-1">10+</span>
           <span className="font-label-caps text-[10px] uppercase tracking-widest text-[#e2e3e7]">Projects Completed</span>
         </div>
 
         {/* Stat 3: 9+ Domains */}
-        <div className="absolute top-[14%] right-[6%] rotate-[-2deg] animate-float-slow bg-[#0D0D0E]/80 backdrop-blur-xl border border-white/15 p-5 rounded-xl flex flex-col items-center pointer-events-auto hover:border-white/30 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.5)]">
-          <span className="font-display text-4xl font-bold text-[#10b981] mb-1">9+</span>
+        <div className="absolute top-[8%] right-[5%] rotate-[-2deg] animate-float-slow bg-[#0D0D0E]/80 backdrop-blur-xl border border-white/15 p-4 rounded-xl flex flex-col items-center pointer-events-auto hover:border-white/30 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.5)]">
+          <span className="font-display text-3xl font-bold text-[#10b981] mb-1">9+</span>
           <span className="font-label-caps text-[10px] uppercase tracking-widest text-[#e2e3e7]">DOMAINS</span>
         </div>
 
         {/* Stat 4: 0 Escalations */}
-        <div className="absolute top-[72%] right-[6%] rotate-[5deg] animate-float bg-[#0D0D0E]/80 backdrop-blur-xl border border-white/15 p-5 rounded-xl flex flex-col items-center pointer-events-auto hover:border-white/30 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.5)]">
-          <span className="font-display text-4xl font-bold text-white mb-1">0</span>
+        <div className="absolute bottom-[8%] right-[5%] rotate-[5deg] animate-float bg-[#0D0D0E]/80 backdrop-blur-xl border border-white/15 p-4 rounded-xl flex flex-col items-center pointer-events-auto hover:border-white/30 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.5)]">
+          <span className="font-display text-3xl font-bold text-white mb-1">0</span>
           <span className="font-label-caps text-[10px] uppercase tracking-widest text-[#e2e3e7]">Escalations</span>
         </div>
       </div>
 
       {/* Main Center Content */}
-      <div className="relative z-20 max-w-4xl mx-auto px-6 text-center flex flex-col items-center gap-6 pt-12">
+      <div className="relative z-20 max-w-4xl mx-auto px-6 text-center flex flex-col items-center gap-4 sm:gap-5 pt-4 sm:pt-6">
         <h1 className="font-display text-[52px] sm:text-[80px] md:text-[110px] font-bold text-white tracking-tighter leading-[0.92] mb-2 drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
           Hi, I'm <span className="text-emerald-400">Balaram!</span>
         </h1>

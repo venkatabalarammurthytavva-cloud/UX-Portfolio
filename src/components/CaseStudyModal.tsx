@@ -40,6 +40,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-case-study-title"
+      data-lenis-prevent
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}

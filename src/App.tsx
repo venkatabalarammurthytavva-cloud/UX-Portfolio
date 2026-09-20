@@ -5,7 +5,7 @@ import { FeaturedWork } from './components/FeaturedWork';
 import { CaseStudyModal } from './components/CaseStudyModal';
 import { CrimeAnalyticsCaseStudy } from './components/CrimeAnalyticsCaseStudy';
 import { BOBEpayCaseStudy } from './components/BOBEpayCaseStudy';
-import { DesignSystemExplorer } from './components/DesignSystemExplorer';
+import { SolutionsPage } from './components/SolutionsPage';
 import { AboutSection } from './components/AboutSection';
 import { ShopSection } from './components/ShopSection';
 import { AIChatDrawer } from './components/AIChatDrawer';
@@ -13,6 +13,12 @@ import { ContactModal } from './components/ContactModal';
 import { Footer } from './components/Footer';
 import { CaseStudy } from './types';
 import { CASE_STUDIES } from './data/portfolioData';
+import {
+  initSmoothScroll,
+  pauseSmoothScroll,
+  resumeSmoothScroll,
+  scrollToTop,
+} from './utils/smoothScroll';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<'work' | 'systems' | 'about' | 'shop'>('work');
@@ -22,6 +28,22 @@ export default function App() {
   const [isAIOpen, setIsAIOpen] = useState<boolean>(false);
   const [isContactOpen, setIsContactOpen] = useState<boolean>(false);
 
+  // Initialize Lenis smooth scroll engine
+  useEffect(() => {
+    const cleanup = initSmoothScroll();
+    return cleanup;
+  }, []);
+
+  // Pause smooth scroll when fixed overlay modals/drawers are open
+  useEffect(() => {
+    const isOverlayModalOpen = Boolean(selectedCaseStudy || isAIOpen || isContactOpen);
+    if (isOverlayModalOpen) {
+      pauseSmoothScroll();
+    } else {
+      resumeSmoothScroll();
+    }
+  }, [selectedCaseStudy, isAIOpen, isContactOpen]);
+
   // Check URL hash for direct links (e.g. #crime-analytics or #bob-epay-ux-audit)
   useEffect(() => {
     const handleHashChange = () => {
@@ -30,6 +52,7 @@ export default function App() {
         setIsCrimeAnalyticsOpen(true);
         setIsBOBCaseStudyOpen(false);
         setSelectedCaseStudy(null);
+        scrollToTop(true);
       } else if (
         hash === '#bob-epay-ux-audit' ||
         hash === '#bob-ux-audit' ||
@@ -39,6 +62,25 @@ export default function App() {
         setIsBOBCaseStudyOpen(true);
         setIsCrimeAnalyticsOpen(false);
         setSelectedCaseStudy(null);
+        scrollToTop(true);
+      } else if (hash === '#solutions' || hash === '#systems') {
+        setIsCrimeAnalyticsOpen(false);
+        setIsBOBCaseStudyOpen(false);
+        setSelectedCaseStudy(null);
+        setActiveTab('systems');
+        scrollToTop(true);
+      } else if (hash === '#about') {
+        setIsCrimeAnalyticsOpen(false);
+        setIsBOBCaseStudyOpen(false);
+        setSelectedCaseStudy(null);
+        setActiveTab('about');
+        scrollToTop(true);
+      } else if (hash === '#home' || hash === '#work' || hash === '') {
+        setIsCrimeAnalyticsOpen(false);
+        setIsBOBCaseStudyOpen(false);
+        setSelectedCaseStudy(null);
+        setActiveTab('work');
+        scrollToTop(true);
       }
     };
 
@@ -53,11 +95,13 @@ export default function App() {
       setIsBOBCaseStudyOpen(false);
       setSelectedCaseStudy(null);
       window.history.pushState(null, '', '#crime-analytics');
+      scrollToTop();
     } else if (caseStudy.id === 'bank-of-baroda-ux-audit') {
       setIsBOBCaseStudyOpen(true);
       setIsCrimeAnalyticsOpen(false);
       setSelectedCaseStudy(null);
       window.history.pushState(null, '', '#bob-epay-ux-audit');
+      scrollToTop();
     } else {
       setIsCrimeAnalyticsOpen(false);
       setIsBOBCaseStudyOpen(false);
@@ -73,12 +117,14 @@ export default function App() {
       window.history.pushState(null, '', window.location.pathname);
     }
     setActiveTab('work');
+    scrollToTop();
   };
 
   const handleNextFromCrimeAnalytics = () => {
     setIsCrimeAnalyticsOpen(false);
     setIsBOBCaseStudyOpen(true);
     window.history.pushState(null, '', '#bob-epay-ux-audit');
+    scrollToTop();
   };
 
   const handleNextFromBOB = () => {
@@ -99,6 +145,7 @@ export default function App() {
       }
     }
     setActiveTab(tab);
+    scrollToTop();
   };
 
   return (
@@ -147,8 +194,24 @@ export default function App() {
               </>
             )}
 
-            {/* Systems View */}
-            {activeTab === 'systems' && <DesignSystemExplorer />}
+            {/* Solutions Editorial Page */}
+            {activeTab === 'systems' && (
+              <SolutionsPage
+                onSelectCaseStudy={handleSelectCaseStudy}
+                onOpenCrimeCaseStudy={() => {
+                  setIsCrimeAnalyticsOpen(true);
+                  setIsBOBCaseStudyOpen(false);
+                  setSelectedCaseStudy(null);
+                  window.history.pushState(null, '', '#crime-analytics');
+                }}
+                onOpenBOBCaseStudy={() => {
+                  setIsBOBCaseStudyOpen(true);
+                  setIsCrimeAnalyticsOpen(false);
+                  setSelectedCaseStudy(null);
+                  window.history.pushState(null, '', '#bob-epay-ux-audit');
+                }}
+              />
+            )}
 
             {/* About View */}
             {activeTab === 'about' && <AboutSection />}

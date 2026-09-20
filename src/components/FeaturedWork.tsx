@@ -176,7 +176,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectCaseStudy })
     <section 
       id="featured-work" 
       aria-labelledby="selected-work-heading" 
-      className="w-full relative flex flex-col items-center py-16 sm:py-20 lg:py-28 transition-colors duration-700 ease-out overflow-hidden"
+      className="w-full relative flex flex-col items-center py-10 sm:py-14 md:py-16 transition-colors duration-700 ease-out overflow-hidden"
       style={{ 
         backgroundColor: activeTheme.bgBase
       }}
@@ -196,13 +196,13 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectCaseStudy })
         className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
         aria-hidden="true"
       >
-        <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-[#0D0D0E] to-transparent pointer-events-none opacity-90" />
-        <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#0D0D0E] to-transparent pointer-events-none opacity-90" />
+        <div className="absolute top-0 inset-x-0 h-16 sm:h-20 bg-gradient-to-b from-[#0D0D0E] to-transparent pointer-events-none opacity-90" />
+        <div className="absolute bottom-0 inset-x-0 h-16 sm:h-20 bg-gradient-to-t from-[#0D0D0E] to-transparent pointer-events-none opacity-90" />
       </div>
 
       <div className="w-full max-w-4xl px-5 sm:px-8 md:px-12 flex flex-col relative z-10">
         {/* Section Heading: "Selected Work" */}
-        <div className="flex items-center justify-between mb-12 sm:mb-16 border-b border-white/10 pb-5">
+        <div className="flex items-center justify-between mb-8 sm:mb-10 border-b border-white/10 pb-4">
           <div className="space-y-1">
             <h2 
               id="selected-work-heading" 
@@ -217,7 +217,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectCaseStudy })
         </div>
 
         {/* Project List */}
-        <div className="w-full flex flex-col space-y-16 sm:space-y-24 md:space-y-28">
+        <div className="w-full flex flex-col space-y-10 sm:space-y-14 md:space-y-16">
           {CASE_STUDIES.map((project, index) => {
             const { company, readTime, LogoComponent, headline } = getProjectMetadata(project);
             const isCurrentActive = project.id === activeProjectId;
@@ -233,7 +233,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectCaseStudy })
                 data-project-id={project.id}
                 id={`project-card-${project.id}`}
                 aria-labelledby={`project-headline-${project.id}`}
-                className="w-full flex flex-col group scroll-mt-24 md:min-h-[480px] md:h-[calc(100vh-150px)] md:max-h-[700px] justify-between transition-all duration-500 relative"
+                className="w-full flex flex-col group scroll-mt-20 justify-between transition-all duration-500 relative"
               >
                 {/* Dedicated Overhead Card Lighting Source (Identical top-center 50% origin for each card, matching Finovation) */}
                 <div 
@@ -247,7 +247,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectCaseStudy })
 
                 {/* 1. Large Rounded Visual Container - flexible height to fit single viewport */}
                 <div 
-                  className="w-full aspect-[16/10] md:aspect-auto md:flex-1 md:min-h-0 rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#161618] border border-white/10 shadow-2xl relative transition-all duration-500"
+                  className="w-full aspect-[16/10] sm:aspect-[16/9] md:max-h-[520px] rounded-[20px] sm:rounded-[28px] overflow-hidden bg-[#161618] border border-white/10 shadow-2xl relative transition-all duration-500"
                 >
                   <img
                     src={project.bgImage}
@@ -261,7 +261,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectCaseStudy })
                 </div>
 
                 {/* 2. Metadata + Headline + Read Case Study Button Directly Below the Visual */}
-                <div className="w-full flex-shrink-0 flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mt-3 sm:mt-4 md:mt-5 px-1">
+                <div className="w-full flex-shrink-0 flex flex-col sm:flex-row sm:items-end justify-between gap-3.5 sm:gap-4 mt-3 sm:mt-4 md:mt-5 px-0 sm:px-1">
                   {/* Left Column: Metadata + Large Bold Headline */}
                   <div className="flex-1 min-w-0">
                     {/* Row 1: Logo + Company Name · Read Time */}
@@ -284,14 +284,15 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectCaseStudy })
                     </h3>
                   </div>
 
-                  {/* Right Column: Read Case Study Button */}
-                  <div className="flex-shrink-0 pt-1 sm:pt-0">
+                  {/* Right Column: Read Case Study Button (Full Width Edge-to-Edge on Mobile) */}
+                  <div className="w-full sm:w-auto flex-shrink-0 pt-1 sm:pt-0">
                     <button
+                      id={`btn-read-case-study-${project.id}`}
                       type="button"
                       onClick={() => onSelectCaseStudy(project)}
                       aria-haspopup="dialog"
                       aria-label={`Read case study for ${project.title}`}
-                      className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-black text-xs sm:text-[13px] font-semibold tracking-wide uppercase font-label-caps cursor-pointer transition-all duration-200 hover:scale-[1.04] active:scale-95 shadow-md"
+                      className="w-full sm:w-auto justify-center inline-flex items-center gap-2 px-5 py-3 sm:py-2.5 rounded-full bg-white text-black text-xs sm:text-[13px] font-semibold tracking-wide uppercase font-label-caps cursor-pointer transition-all duration-200 hover:scale-[1.02] sm:hover:scale-[1.04] active:scale-95 shadow-md"
                     >
                       <span>Read Case Study</span>
                       <span className="text-sm transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">→</span>

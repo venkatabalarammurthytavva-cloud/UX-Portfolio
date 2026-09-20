@@ -116,7 +116,7 @@ export const AIChatDrawer: React.FC<AIChatDrawerProps> = ({ isOpen, onClose }) =
       }}
       className="fixed inset-0 z-50 flex justify-end bg-black/70 backdrop-blur-sm animate-fadeIn"
     >
-      <div className="w-full max-w-md bg-[#141313] border-l border-[#27272A] h-full flex flex-col shadow-2xl text-[#e5e2e1]">
+      <div data-lenis-prevent className="w-full max-w-md bg-[#141313] border-l border-[#27272A] h-full flex flex-col shadow-2xl text-[#e5e2e1]">
         {/* Top Header */}
         <div className="p-4 sm:p-6 border-b border-[#27272A] bg-[#1A1A1C] flex justify-between items-center">
           <div className="flex items-center gap-3">

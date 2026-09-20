@@ -46,6 +46,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
       role="dialog"
       aria-modal="true"
       aria-labelledby="contact-modal-title"
+      data-lenis-prevent
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { PROFILE_IMAGE } from '../data/portfolioData';
+import { scrollToTop } from '../utils/smoothScroll';
 
 interface HeaderProps {
   activeTab: 'work' | 'systems' | 'about' | 'shop';
@@ -14,6 +15,27 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenAI,
   onOpenContact,
 }) => {
+  const handleHomeClick = () => {
+    if (activeTab !== 'work') {
+      setActiveTab('work');
+    }
+    scrollToTop();
+  };
+
+  const handleAboutClick = () => {
+    setActiveTab('about');
+    scrollToTop();
+  };
+
+  const handleSolutionsClick = () => {
+    setActiveTab('systems');
+    scrollToTop();
+  };
+
+  const isHomeActive = activeTab === 'work';
+  const isAboutActive = activeTab === 'about';
+  const isSolutionsActive = activeTab === 'systems';
+
   return (
     <header role="banner" className="fixed top-0 left-0 right-0 z-50 bg-[#0D0D0E]/95 backdrop-blur-md border-b border-[#202022] transition-all">
       <div className="relative flex justify-between items-center h-20 px-4 sm:px-8 max-w-[1440px] mx-auto w-full">
@@ -21,7 +43,7 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center z-10">
           <button
             type="button"
-            onClick={() => setActiveTab('work')}
+            onClick={handleHomeClick}
             className="flex items-center group transition-transform hover:scale-105 active:scale-95 rounded-full"
             aria-label="Tavva Balaram homepage, go to Work section"
           >
@@ -35,61 +57,52 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </div>
 
-        {/* Center: Navigation Links (Horizontally Centered relative to entire header bar) */}
-        <nav aria-label="Main Navigation" className="hidden md:flex items-center gap-8 lg:gap-12 font-label-caps text-[13px] tracking-[0.18em] uppercase absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
-          {/* WORK */}
+        {/* Center: Navigation Links - Horizontal Rounded Liquid Glass Pill */}
+        <nav
+          aria-label="Main Navigation"
+          className="hidden md:flex items-center gap-1 p-1 rounded-full bg-[#121215]/75 backdrop-blur-2xl border border-white/[0.12] shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_1px_0_rgba(255,255,255,0.22),inset_0_-1px_1px_0_rgba(0,0,0,0.4)] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto z-20"
+        >
+          {/* Home */}
           <button
             type="button"
-            onClick={() => setActiveTab('work')}
-            aria-current={activeTab === 'work' ? 'page' : undefined}
-            className={`transition-all py-1 relative rounded ${
-              activeTab === 'work'
-                ? 'text-white font-semibold after:content-[\'\'] after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-white'
-                : 'text-[#A1A1AA] hover:text-white font-medium'
+            onClick={handleHomeClick}
+            aria-current={isHomeActive ? 'page' : undefined}
+            className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-all duration-200 ${
+              isHomeActive
+                ? 'text-white font-semibold bg-white/[0.14] border border-white/[0.14] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.28),0_2px_8px_rgba(0,0,0,0.25)]'
+                : 'text-[#A1A1AA] hover:text-white hover:bg-white/[0.08] border border-transparent'
             }`}
           >
-            WORK
+            Home
           </button>
 
-          {/* SOLUTIONS (mapped to systems & token explorer) */}
+          {/* About */}
           <button
             type="button"
-            onClick={() => setActiveTab('systems')}
-            aria-current={activeTab === 'systems' ? 'page' : undefined}
-            className={`transition-all py-1 relative rounded ${
-              activeTab === 'systems'
-                ? 'text-white font-semibold after:content-[\'\'] after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-white'
-                : 'text-[#A1A1AA] hover:text-white font-medium'
+            onClick={handleAboutClick}
+            aria-current={isAboutActive ? 'page' : undefined}
+            className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-all duration-200 ${
+              isAboutActive
+                ? 'text-white font-semibold bg-white/[0.14] border border-white/[0.14] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.28),0_2px_8px_rgba(0,0,0,0.25)]'
+                : 'text-[#A1A1AA] hover:text-white hover:bg-white/[0.08] border border-transparent'
             }`}
           >
-            SOLUTIONS
+            About
           </button>
 
-          {/* ABOUT */}
+          {/* Solutions */}
           <button
             type="button"
-            onClick={() => setActiveTab('about')}
-            aria-current={activeTab === 'about' ? 'page' : undefined}
-            className={`transition-all py-1 relative rounded ${
-              activeTab === 'about'
-                ? 'text-white font-semibold after:content-[\'\'] after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-white'
-                : 'text-[#A1A1AA] hover:text-white font-medium'
+            onClick={handleSolutionsClick}
+            aria-current={isSolutionsActive ? 'page' : undefined}
+            className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-all duration-200 ${
+              isSolutionsActive
+                ? 'text-white font-semibold bg-white/[0.14] border border-white/[0.14] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.28),0_2px_8px_rgba(0,0,0,0.25)]'
+                : 'text-[#A1A1AA] hover:text-white hover:bg-white/[0.08] border border-transparent'
             }`}
           >
-            ABOUT
+            Solutions
           </button>
-
-          {/* RESUME ↗ */}
-          <a
-            href="/Balaram.tavva_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#A1A1AA] hover:text-white font-medium transition-all py-1 flex items-center gap-1.5 group rounded"
-            aria-label="Download Balaram's Resume (PDF, opens in new tab)"
-          >
-            <span>RESUME</span>
-            <span className="text-sm font-sans group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true">↗</span>
-          </a>
         </nav>
 
         {/* Right: 5 Circular Social & Action Badges */}
@@ -161,47 +174,30 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Mobile Sub-Navigation Bar */}
-      <nav aria-label="Mobile Navigation" className="flex md:hidden justify-around items-center h-12 border-t border-[#202022] bg-[#111113] font-label-caps text-[11px] uppercase tracking-widest text-[#A1A1AA] px-2 sm:px-4 overflow-x-auto">
+      <nav aria-label="Mobile Navigation" className="flex md:hidden justify-around items-center h-12 border-t border-[#202022] bg-[#111113] text-[12px] font-medium text-[#A1A1AA] px-4 overflow-x-auto">
         <button
           type="button"
-          onClick={() => setActiveTab('work')}
-          aria-current={activeTab === 'work' ? 'page' : undefined}
-          className={`py-1 px-1.5 whitespace-nowrap rounded ${activeTab === 'work' ? 'text-white font-bold border-b-2 border-white' : 'hover:text-white'}`}
+          onClick={handleHomeClick}
+          aria-current={isHomeActive ? 'page' : undefined}
+          className={`py-1 px-3 whitespace-nowrap rounded ${isHomeActive ? 'text-white font-semibold border-b-2 border-white' : 'hover:text-white'}`}
         >
-          WORK
+          Home
         </button>
         <button
           type="button"
-          onClick={() => setActiveTab('systems')}
-          aria-current={activeTab === 'systems' ? 'page' : undefined}
-          className={`py-1 px-1.5 whitespace-nowrap rounded ${activeTab === 'systems' ? 'text-white font-bold border-b-2 border-white' : 'hover:text-white'}`}
+          onClick={handleAboutClick}
+          aria-current={isAboutActive ? 'page' : undefined}
+          className={`py-1 px-3 whitespace-nowrap rounded ${isAboutActive ? 'text-white font-semibold border-b-2 border-white' : 'hover:text-white'}`}
         >
-          SOLUTIONS
+          About
         </button>
         <button
           type="button"
-          onClick={() => setActiveTab('about')}
-          aria-current={activeTab === 'about' ? 'page' : undefined}
-          className={`py-1 px-1.5 whitespace-nowrap rounded ${activeTab === 'about' ? 'text-white font-bold border-b-2 border-white' : 'hover:text-white'}`}
+          onClick={handleSolutionsClick}
+          aria-current={isSolutionsActive ? 'page' : undefined}
+          className={`py-1 px-3 whitespace-nowrap rounded ${isSolutionsActive ? 'text-white font-semibold border-b-2 border-white' : 'hover:text-white'}`}
         >
-          ABOUT
-        </button>
-        <a
-          href="/Balaram.tavva_Resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-emerald-400 font-bold flex items-center gap-0.5 py-1 px-1.5 whitespace-nowrap rounded"
-          aria-label="Resume PDF (opens in new tab)"
-        >
-          RESUME <span aria-hidden="true">↗</span>
-        </a>
-        <button
-          type="button"
-          onClick={onOpenAI}
-          aria-label="Open AI Assistant Drawer"
-          className="text-purple-400 font-bold py-1 px-1.5 whitespace-nowrap rounded"
-        >
-          AI TWIN
+          Solutions
         </button>
       </nav>
     </header>
