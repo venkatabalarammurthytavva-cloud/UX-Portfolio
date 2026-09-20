@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { FeaturedWork } from './components/FeaturedWork';
 import { CaseStudyModal } from './components/CaseStudyModal';
 import { CrimeAnalyticsCaseStudy } from './components/CrimeAnalyticsCaseStudy';
+import { BOBEpayCaseStudy } from './components/BOBEpayCaseStudy';
 import { DesignSystemExplorer } from './components/DesignSystemExplorer';
 import { AboutSection } from './components/AboutSection';
 import { ShopSection } from './components/ShopSection';
@@ -17,15 +18,26 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<'work' | 'systems' | 'about' | 'shop'>('work');
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null);
   const [isCrimeAnalyticsOpen, setIsCrimeAnalyticsOpen] = useState<boolean>(false);
+  const [isBOBCaseStudyOpen, setIsBOBCaseStudyOpen] = useState<boolean>(false);
   const [isAIOpen, setIsAIOpen] = useState<boolean>(false);
   const [isContactOpen, setIsContactOpen] = useState<boolean>(false);
 
-  // Check URL hash for direct links (e.g. #crime-analytics)
+  // Check URL hash for direct links (e.g. #crime-analytics or #bob-epay-ux-audit)
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
       if (hash === '#crime-analytics' || hash === '#crime-analytics-platform') {
         setIsCrimeAnalyticsOpen(true);
+        setIsBOBCaseStudyOpen(false);
+        setSelectedCaseStudy(null);
+      } else if (
+        hash === '#bob-epay-ux-audit' ||
+        hash === '#bob-ux-audit' ||
+        hash === '#bank-of-baroda-ux-audit' ||
+        hash === '#bank-of-baroda'
+      ) {
+        setIsBOBCaseStudyOpen(true);
+        setIsCrimeAnalyticsOpen(false);
         setSelectedCaseStudy(null);
       }
     };
@@ -38,16 +50,24 @@ export default function App() {
   const handleSelectCaseStudy = (caseStudy: CaseStudy) => {
     if (caseStudy.id === 'crime-analytics-platform') {
       setIsCrimeAnalyticsOpen(true);
+      setIsBOBCaseStudyOpen(false);
       setSelectedCaseStudy(null);
       window.history.pushState(null, '', '#crime-analytics');
+    } else if (caseStudy.id === 'bank-of-baroda-ux-audit') {
+      setIsBOBCaseStudyOpen(true);
+      setIsCrimeAnalyticsOpen(false);
+      setSelectedCaseStudy(null);
+      window.history.pushState(null, '', '#bob-epay-ux-audit');
     } else {
       setIsCrimeAnalyticsOpen(false);
+      setIsBOBCaseStudyOpen(false);
       setSelectedCaseStudy(caseStudy);
     }
   };
 
   const handleBackToWork = () => {
     setIsCrimeAnalyticsOpen(false);
+    setIsBOBCaseStudyOpen(false);
     setSelectedCaseStudy(null);
     if (window.location.hash) {
       window.history.pushState(null, '', window.location.pathname);
@@ -57,16 +77,23 @@ export default function App() {
 
   const handleNextFromCrimeAnalytics = () => {
     setIsCrimeAnalyticsOpen(false);
+    setIsBOBCaseStudyOpen(true);
+    window.history.pushState(null, '', '#bob-epay-ux-audit');
+  };
+
+  const handleNextFromBOB = () => {
+    setIsBOBCaseStudyOpen(false);
     if (window.location.hash) {
       window.history.pushState(null, '', window.location.pathname);
     }
-    const bobProject = CASE_STUDIES.find((cs) => cs.id === 'bank-of-baroda-ux-audit') || null;
-    setSelectedCaseStudy(bobProject);
+    const axisProject = CASE_STUDIES.find((cs) => cs.id === 'axis-amc-wealth') || null;
+    setSelectedCaseStudy(axisProject);
   };
 
   const handleTabChange = (tab: 'work' | 'systems' | 'about' | 'shop') => {
-    if (isCrimeAnalyticsOpen) {
+    if (isCrimeAnalyticsOpen || isBOBCaseStudyOpen) {
       setIsCrimeAnalyticsOpen(false);
+      setIsBOBCaseStudyOpen(false);
       if (window.location.hash) {
         window.history.pushState(null, '', window.location.pathname);
       }
@@ -99,6 +126,12 @@ export default function App() {
           <CrimeAnalyticsCaseStudy
             onBack={handleBackToWork}
             onNextCaseStudy={handleNextFromCrimeAnalytics}
+          />
+        ) : isBOBCaseStudyOpen ? (
+          /* Dedicated BOB ePay & BOB World UX Audit Case Study Page */
+          <BOBEpayCaseStudy
+            onBack={handleBackToWork}
+            onNextCaseStudy={handleNextFromBOB}
           />
         ) : (
           <>

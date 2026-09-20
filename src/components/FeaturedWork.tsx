@@ -139,7 +139,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ onSelectCaseStudy })
           company: 'Bank of Baroda',
           readTime: '6 min',
           LogoComponent: BankOfBarodaLogo,
-          headline: project.subtitle || 'Mobile Banking Experience Audit & Redesign',
+          headline: project.subtitle || 'Making everyday banking easier to navigate',
         };
       case 'axis-amc-wealth':
         return {

@@ -168,8 +168,8 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: "bank-of-baroda-ux-audit",
-    title: "Bank of Baroda — UX Audit",
-    subtitle: "Mobile Banking Experience Audit & Redesign",
+    title: "BOB ePay & BOB World UX Audit",
+    subtitle: "Making everyday banking easier to navigate",
     category: "Banking UX",
     indexNumber: "02 / 05",
     team: "FinTech UX Audit",
